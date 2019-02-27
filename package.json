@@ -1,7 +1,7 @@
 {
-  "name": "medical-research",
+  "name": "football-statistics",
   "version": "1.0.0",
-  "description": "This project app helps to keep control over medical drugs researches",
+  "description": "This project app appears information abuot different football leagues, teams, fixtures and all information related to this subject",
   "main": "index.js",
   "scripts": {
     "eslint:fix": "eslint src/app/ --fix",
@@ -17,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pavelLyolya/medical-research.git"
+    "url": "git+https://github.com/pavelLyolya/football-statistics.git"
   },
   "author": "Pavel Lyolya",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/pavelLyolya/medical-research/issues"
+    "url": "https://github.com/pavelLyolya/football-statistics/issues"
   },
-  "homepage": "https://github.com/pavelLyolya/medical-research#readme",
+  "homepage": "https://github.com/pavelLyolya/football-statistics#readme",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.3",
