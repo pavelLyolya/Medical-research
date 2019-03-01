@@ -1,10 +1,18 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './Header/Header';
+import Footer from './Footer';
+import Table from './Table/Table';
 
 const App = () => (
     <Router>
-        <Header />
+        <React.Fragment>
+            <Header />
+            <main>
+                <Route exact path='/table' component={Table} />
+            </main>
+            <Footer />
+        </React.Fragment>
     </Router>
 );
 
