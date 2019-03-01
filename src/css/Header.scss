@@ -1,0 +1,72 @@
+.appHeader {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #568b33;
+    height: 7vh;
+
+    h1 {
+        margin: 0 3%;
+        box-sizing: content-box;
+        font-size: 4rem;
+        color: #FFF;
+    }
+}
+
+.navigation {
+    display: flex;
+    height: 100%;
+    width: 15%;
+
+    .headerLink {
+        flex: 1 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        box-sizing: border-box;
+        padding: 3% 10% 1% 10%;
+        font-size: 3rem;
+        color: #FFF;
+
+        &:hover {
+            background-color: #3d6324;
+        }
+    }
+}
+
+.signing {
+    position: absolute;
+    right: 2%;
+    box-sizing: content-box;
+    font-size: 1.6rem;
+    font-weight: 600;
+    
+    span {
+        margin: 0 5px;
+        color: #fff;
+    }
+}
+
+.signButton {
+    display: inline-block;
+    margin: 4px 2px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #f3f3f3;
+    text-align: center;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 1.8rem;
+    font-weight: inherit;
+    color: #568b33;
+    cursor: pointer;
+
+    &:focus {
+        outline: none;
+    }
+    &:active {
+    background-color: #c4c4c4;
+    }
+}
