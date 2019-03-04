@@ -48,3 +48,22 @@ html {
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 	font-size: 10px;
 }
+main {
+	max-width: 1024px;
+	min-height: 86vh;
+	margin: 0 auto;
+	padding: 3% 0;
+	box-sizing: border-box;
+}
+
+@media (max-width: 425px) {
+	html {
+		font-size: 7px;
+	}
+}
+
+@media (max-width: 320px) {
+	html {
+		font-size: 5px;
+	}
+}

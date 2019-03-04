@@ -9,7 +9,8 @@ const App = () => (
         <React.Fragment>
             <Header />
             <main>
-                <Route exact path='/table' component={Table} />
+                <Route exact path='/' />
+                <Route path='/table' component={Table} />
             </main>
             <Footer />
         </React.Fragment>

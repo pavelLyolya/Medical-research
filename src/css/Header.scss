@@ -1,11 +1,14 @@
+@import './colorAndFont';
+
 .appHeader {
     position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    background-color: #568b33;
-    height: 7vh;
+    background-color: $main-color;
 
     h1 {
+        order: -2;
         margin: 0 3%;
         box-sizing: content-box;
         font-size: 4rem;
@@ -15,17 +18,16 @@
 
 .navigation {
     display: flex;
-    height: 100%;
-    width: 15%;
+    min-height: 7vh;
+    min-width: 15%;
 
     .headerLink {
         flex: 1 1;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
-        box-sizing: border-box;
-        padding: 3% 10% 1% 10%;
+        min-height: 7vh;
+        padding: 0 5%;
         font-size: 3rem;
         color: #FFF;
 
@@ -51,7 +53,7 @@
 .signButton {
     display: inline-block;
     margin: 4px 2px;
-    padding: 10px;
+    padding: 3% 10px;
     border: none;
     border-radius: 8px;
     background-color: #f3f3f3;
@@ -60,7 +62,7 @@
     font-family: inherit;
     font-size: 1.8rem;
     font-weight: inherit;
-    color: #568b33;
+    color: $main-color;
     cursor: pointer;
 
     &:focus {
@@ -68,5 +70,28 @@
     }
     &:active {
     background-color: #c4c4c4;
+    }
+}
+
+@media (max-width: 768px) {
+    .appHeader {
+        justify-content: space-between;
+    }
+
+	.signing {
+        order: -1;
+        position: static;
+        
+        *:not(:first-child) {
+            display: none;
+        }
+    }
+
+    .navigation {
+        width: 100%;
+
+        .headerLink {
+            padding: 1% 5%;
+        }
     }
 }
