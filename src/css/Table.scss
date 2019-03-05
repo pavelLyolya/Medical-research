@@ -5,7 +5,7 @@
     justify-content: space-between;
     box-sizing: border-box;
 
-    .tableTab {
+    %tableTab {
         flex: 1 0;
         background-color: #d3ebc1;
         box-shadow: 0 3px 3px #868686; 
@@ -15,10 +15,19 @@
 
         &:not(:last-child) {
             margin-right: 5px;
-        }      
+        }
+    }
+
+    .tableTab {
+        @extend %tableTab;
+        &:hover {
+            background-color: #c2eca2;
+            cursor: pointer;
+        }
     }
 
     .activeTab {
+        @extend %tableTab;
         background-color: $main-color;
     }
 }
