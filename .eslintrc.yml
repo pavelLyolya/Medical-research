@@ -11,7 +11,7 @@ extends:
 parser: babel-eslint
 
 rules:
-  indent: ["error", 4]
+  indent: ["error", 4, { "SwitchCase": 1 }]
 
 env:
   browser: true
