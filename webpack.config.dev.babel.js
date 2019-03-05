@@ -8,7 +8,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import autoprefixer from 'autoprefixer';
 
 module.exports = {
-    devtool: false,
+    devtool: 'eval-source-map',
     entry: {
         main: [
             '@babel/polyfill',
