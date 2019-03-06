@@ -74,11 +74,20 @@ const initialState = [
 ];
 
 const leagues = (state = initialState, action) => {
+    let newState = null;
+    let standings = null;
+
     switch (action.type) {
         case l.FETCHING_STANDINGS:
-            return 1;
+            newState = state.slice();
+            newState.find(league => league.id === action.idLeague).standings.isFething = true;
+            return newState;
         case l.STANDINGS_FETCHED:
-            return 2;
+            newState = state.slice();
+            ({ standings } = newState.find(league => league.id === action.idLeague));
+            standings.isFething = false;
+            standings.items = action.data;
+            return newState;
         case l.FETCHING_STANDINGS_ERROR:
             return 3;
         case l.FETCHING_TEAMS:

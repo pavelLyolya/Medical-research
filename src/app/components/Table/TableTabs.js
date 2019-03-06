@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TableTabs = ({ activeLeague, leagues, changeActiveLeague }) => {
+const TableTabs = ({
+    activeLeagueId,
+    leagues,
+    changeActiveLeague,
+    fetchStandings,
+}) => {
     const tabList = leagues.map((league) => {
-        const onClick = () => changeActiveLeague(league.id);
+        const onClick = () => {
+            changeActiveLeague(league.id);
+            fetchStandings(league.id);
+        };
         return (
             <span
                 key={league.id}
-                className={ activeLeague === league.id ? 'activeTab' : 'tableTab' }
+                className={ activeLeagueId === league.id ? 'activeTab' : 'tableTab' }
                 onClick={onClick}
             >
                 {league.name}
@@ -22,9 +30,10 @@ const TableTabs = ({ activeLeague, leagues, changeActiveLeague }) => {
 };
 
 TableTabs.propTypes = {
-    activeLeague: PropTypes.number.isRequired,
+    activeLeagueId: PropTypes.number.isRequired,
     leagues: PropTypes.array.isRequired,
     changeActiveLeague: PropTypes.func.isRequired,
+    fetchStandings: PropTypes.func.isRequired,
 };
 
 export default TableTabs;
