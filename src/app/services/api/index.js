@@ -5,4 +5,7 @@ const api = axios.create({
     headers: { 'X-Auth-Token': '16409b6bad8f4c3db1dfb338ff83a7b6' },
 });
 
-export default api;
+const getData = uri => api.get(uri)
+    .then(res => res.data);
+
+export default getData;
