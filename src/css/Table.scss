@@ -32,10 +32,11 @@
     }
 }
 
-.tableRow {
+%tableRow {
     display: flex;
     justify-content: space-between;
     font-size: 1.6rem;
+    color: #000;
 
     span {
         flex: 1 1;
@@ -51,10 +52,19 @@
     }
 }
 
-.tableRow:nth-child(2n + 1) {
-    background-color: #cccccc;
+.tableRow {
+    @extend %tableRow;
+    &:nth-child(2n + 1) {
+        background-color: #cccccc;
+    }
+    &:hover {
+        color: $main-color;
+        text-decoration: underline;
+    }
 }
-.tableRow:first-child {
+
+.tableHeader {
+    @extend %tableRow;
     background-color: $main-color;
 }
 
