@@ -8,10 +8,6 @@ const initialState = {
 
 const favoriteTeams = (state = initialState, action) => {
     switch (action.type) {
-        case favoriteTeamsActionType.ADD_FAVORITE_TEAM:
-            return 1;
-        case favoriteTeamsActionType.DELETE_FAVORITE_TEAM:
-            return 1;
         case favoriteTeamsActionType.FETCHING_FAVORITE_TEAMS:
             return {
                 ...state,
