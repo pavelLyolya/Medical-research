@@ -1,8 +1,10 @@
-import { activeLeague as a } from '../actions/actionTypes';
+import { activeLeague } from '../actions/actionTypes';
 
-const activeLeagueId = (state = 2021, action) => {
+const defaultActiveLeagueId = 2021;
+
+const activeLeagueId = (state = defaultActiveLeagueId, action) => {
     switch (action.type) {
-        case a.CHANGE_ACTIVE_LEAGUE:
+        case activeLeague.CHANGE_ACTIVE_LEAGUE:
             return action.id;
         default:
             return state;

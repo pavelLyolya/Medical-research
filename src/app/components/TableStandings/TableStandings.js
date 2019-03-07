@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableTabs from './TableTabs';
-import TableBody from './TableBody';
-import '../../../css/Table.scss';
+import TableStandingsTabs from './TableStandingsTabs';
+import TableStandingsBody from './TableStandingsBody';
+import '../../../css/TableStandings.scss';
 
-class Table extends React.Component {
+class TableStandings extends React.Component {
     componentDidMount() {
         this.props.fetchStandings(this.props.activeLeagueId);
     }
@@ -12,13 +12,13 @@ class Table extends React.Component {
     render() {
         return (
             <section className='tableLeague'>
-                <TableTabs
+                <TableStandingsTabs
                     activeLeagueId={ this.props.activeLeagueId }
                     leagues={ this.props.leagues }
                     changeActiveLeague={ this.props.changeActiveLeague }
                     fetchStandings={ this.props.fetchStandings }
                 />
-                <TableBody
+                <TableStandingsBody
                     activeLeagueId={ this.props.activeLeagueId }
                     leagues={ this.props.leagues }
                 />
@@ -27,11 +27,11 @@ class Table extends React.Component {
     }
 }
 
-Table.propTypes = {
+TableStandings.propTypes = {
     activeLeagueId: PropTypes.number.isRequired,
     leagues: PropTypes.array.isRequired,
     changeActiveLeague: PropTypes.func.isRequired,
     fetchStandings: PropTypes.func.isRequired,
 };
 
-export default Table;
+export default TableStandings;

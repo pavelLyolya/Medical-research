@@ -1,4 +1,4 @@
-import { favoriteTeams as f } from '../actions/actionTypes';
+import { favoriteTeams as favoriteTeamsActionType } from '../actions/actionTypes';
 
 const initialState = {
     isFething: false,
@@ -8,22 +8,22 @@ const initialState = {
 
 const favoriteTeams = (state = initialState, action) => {
     switch (action.type) {
-        case f.ADD_FAVORITE_TEAM:
+        case favoriteTeamsActionType.ADD_FAVORITE_TEAM:
             return 1;
-        case f.DELETE_FAVORITE_TEAM:
+        case favoriteTeamsActionType.DELETE_FAVORITE_TEAM:
             return 1;
-        case f.FETCHING_FAVORITE_TEAMS:
+        case favoriteTeamsActionType.FETCHING_FAVORITE_TEAMS:
             return {
                 ...state,
                 isFething: true,
             };
-        case f.FAVORITE_TEAMS_FETCHED:
+        case favoriteTeamsActionType.FAVORITE_TEAMS_FETCHED:
             return {
                 ...state,
                 isFething: false,
                 items: state.items.concat(),
             };
-        case f.FETCHING_FAVORITE_TEAMS_ERROR:
+        case favoriteTeamsActionType.FETCHING_FAVORITE_TEAMS_ERROR:
             return {
                 ...state,
                 error: 'FETCHING ERROR',

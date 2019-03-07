@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from './Button';
+import HeaderButton from './HeaderButton';
 
 const Signing = () => (
     <div className='signing'>
-        <Button text='Sign in' />
+        <HeaderButton text='Sign in' />
         <span>or</span>
-        <Button text='Sign up' />
+        <HeaderButton text='Sign up' />
     </div>
 );
 

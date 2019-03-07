@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import changeActiveLeague from '../actions/changeActiveLeague';
 import fetchStandings from '../actions/fetchStandings';
-import Table from '../components/Table/Table';
+import TableStandings from '../components/TableStandings/TableStandings';
 
 const mapState = state => ({
     activeLeagueId: state.activeLeagueId,
@@ -13,4 +13,4 @@ const mapDispatch = dispatch => ({
     fetchStandings: id => dispatch(fetchStandings(id)),
 });
 
-export default connect(mapState, mapDispatch)(Table);
+export default connect(mapState, mapDispatch)(TableStandings);

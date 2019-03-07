@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ text }) => (
+const HeaderButton = ({ text }) => (
     <button className='signButton'>
         {text}
     </button>
 );
 
-Button.propTypes = {
+HeaderButton.propTypes = {
     text: PropTypes.string,
 };
 
-export default Button;
+export default HeaderButton;

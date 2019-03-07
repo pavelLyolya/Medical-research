@@ -1,7 +1,7 @@
-import { activeLeague as a } from './actionTypes';
+import { activeLeague } from './actionTypes';
 
 const changeActiveLeague = id => ({
-    type: a.CHANGE_ACTIVE_LEAGUE,
+    type: activeLeague.CHANGE_ACTIVE_LEAGUE,
     id,
 });
 

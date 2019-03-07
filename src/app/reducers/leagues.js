@@ -1,4 +1,4 @@
-import { leagues as l } from '../actions/actionTypes';
+import { leagues as leaguesActionType } from '../actions/actionTypes';
 
 const initialState = [
     {
@@ -78,24 +78,16 @@ const leagues = (state = initialState, action) => {
     let standings = null;
 
     switch (action.type) {
-        case l.FETCHING_STANDINGS:
+        case leaguesActionType.FETCHING_STANDINGS:
             newState = state.slice();
             newState.find(league => league.id === action.idLeague).standings.isFething = true;
             return newState;
-        case l.STANDINGS_FETCHED:
+        case leaguesActionType.STANDINGS_FETCHED:
             newState = state.slice();
             ({ standings } = newState.find(league => league.id === action.idLeague));
             standings.isFething = false;
             standings.items = action.data;
             return newState;
-        case l.FETCHING_STANDINGS_ERROR:
-            return 3;
-        case l.FETCHING_TEAMS:
-            return 4;
-        case l.TEAMS_FETCHED:
-            return 5;
-        case l.FETCHING_TEAMS_ERROR:
-            return 6;
         default:
             return state;
     }

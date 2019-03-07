@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const TableRow = ({ teamId, data }) => (
+const TableStandingsRow = ({ teamId, data }) => (
     <Link to={`/teams/${teamId}`} className='tableRow'>
         {data.map((item, idx) => (
             <span key={idx}>{ item }</span>
@@ -10,9 +10,9 @@ const TableRow = ({ teamId, data }) => (
     </Link>
 );
 
-TableRow.propTypes = {
+TableStandingsRow.propTypes = {
     data: PropTypes.array.isRequired,
     teamId: PropTypes.number.isRequired,
 };
 
-export default TableRow;
+export default TableStandingsRow;

@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Footer from './Footer';
-import TableContainer from '../containers/TableContainer';
+import TableStandingsContainer from '../containers/TableStandingsContainer';
 
 const App = () => (
     <Router>
@@ -10,7 +10,7 @@ const App = () => (
             <Header />
             <main>
                 <Route exact path='/' />
-                <Route path='/table' component={TableContainer} />
+                <Route path='/table' component={TableStandingsContainer} />
             </main>
             <Footer />
         </React.Fragment>
