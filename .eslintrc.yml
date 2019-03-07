@@ -10,6 +10,10 @@ extends:
 
 parser: babel-eslint
 
+rules:
+  indent: ["error", 4, { "SwitchCase": 1 }]
+  class-methods-use-this: ["off"]
+
 env:
   browser: true
   node: true

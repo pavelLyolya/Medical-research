@@ -1,0 +1,13 @@
+.appFooter {
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    min-height: 7vh;
+    font-size: 2rem;
+    font-weight: 100;
+    color: #fff;
+    background-color: #568b33;
+}

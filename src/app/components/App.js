@@ -1,7 +1,20 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Header from './Header/Header';
+import Footer from './Footer';
+import TableStandingsContainer from '../containers/TableStandingsContainer';
 
 const App = () => (
-  <h1>Hello, project template!</h1>
+    <Router>
+        <React.Fragment>
+            <Header />
+            <main>
+                <Route exact path='/' />
+                <Route path='/table' component={TableStandingsContainer} />
+            </main>
+            <Footer />
+        </React.Fragment>
+    </Router>
 );
 
 export default App;
