@@ -21,7 +21,7 @@
     min-height: 7vh;
     min-width: 15%;
 
-    .headerLink {
+    %headerLink {
         flex: 1 1;
         display: flex;
         justify-content: center;
@@ -30,10 +30,17 @@
         padding: 0 5%;
         font-size: 3rem;
         color: #FFF;
+    }
 
+    .headerLink {
+        @extend %headerLink;
         &:hover {
             background-color: #3d6324;
         }
+    }
+    .headerLinkActive {
+        @extend %headerLink;
+        background-color: #3d6324;
     }
 }
 
