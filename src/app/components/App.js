@@ -11,6 +11,7 @@ const App = () => (
             <main>
                 <Route exact path='/' />
                 <Route path='/table' component={TableStandingsContainer} />
+                <Route path='/teams' />
             </main>
             <Footer />
         </React.Fragment>

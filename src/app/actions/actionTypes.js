@@ -20,3 +20,7 @@ export const leagues = {
 export const activeLeague = {
     CHANGE_ACTIVE_LEAGUE: 'CHANGE_ACTIVE_LEAGUE',
 };
+
+export const activePage = {
+    CHANGE_ACTIVE_PAGE: 'CHANGE_ACTIVE_PAGE',
+};
