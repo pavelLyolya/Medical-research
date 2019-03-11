@@ -1,12 +1,14 @@
 @import './colorAndFont';
 
 $gray-color: #dadada;
+$shadow: 0 2px 3px #616161;
 
 .teamsHeader {
     display: flex;
     align-items: center;
     min-height: 7vh;
     padding: 0 3%;
+    box-shadow: $shadow;
     background-color: $main-color;
 
     h2 {
@@ -17,9 +19,10 @@ $gray-color: #dadada;
 
 .leagueSelect {
     position: relative;
-    width: 20%;
-    height: 3vh;
+    width: 250px;
+    height: 30px;
     margin: 15px 0;
+    box-shadow: $shadow;
     line-height: 3;
     overflow: hidden;
 
@@ -29,7 +32,7 @@ $gray-color: #dadada;
         margin: 0;
         padding: 0 0 0 0.5rem;
         background-color: $gray-color;
-        font-size: 1.3rem;
+        font-size: 13px;
         color: #000;
         cursor: pointer;
     }
@@ -40,8 +43,66 @@ $gray-color: #dadada;
         top: 0;
         right: 0;
         bottom: 0;
-        padding: 0 1rem;
+        width: 30px;
+        font-size: 11px;
+        text-align: center;
         background: #adadad;
         pointer-events: none;
-      }
+    }
+}
+
+.teamsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.teamItem {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 49%;
+    min-height: 14vh;
+    box-sizing: border-box;
+    box-shadow: $shadow;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: $gray-color;
+
+    .crestImg {
+        height: 11vh;
+        margin: 0 5%;
+
+        img {
+            width: auto;
+            max-height: 100%;
+        }
+    }
+
+    .teamInfo {
+        display: flex;
+        flex-direction: column;
+
+        .teamName {
+            text-decoration: underline;
+            font-size: 2.5rem;
+        }
+        .teamShortName {
+            margin: 5px 0;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+	.teamsList {
+        flex-direction: column;
+        align-items: center;
+    }
+    .teamItem {
+        width: 90%;
+    }
+    .leagueSelect {
+        margin: 3%;
+    }
 }
