@@ -1,0 +1,14 @@
+@import './colorAndFont';
+
+.teamsHeader {
+    display: flex;
+    align-items: center;
+    min-height: 7vh;
+    padding: 0 3%;
+    background-color: $main-color;
+
+    h2 {
+        font-size: 3rem;
+        color: #fff;
+    }
+}
