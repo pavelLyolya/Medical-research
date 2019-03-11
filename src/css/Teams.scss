@@ -1,5 +1,7 @@
 @import './colorAndFont';
 
+$gray-color: #dadada;
+
 .teamsHeader {
     display: flex;
     align-items: center;
@@ -11,4 +13,35 @@
         font-size: 3rem;
         color: #fff;
     }
+}
+
+.leagueSelect {
+    position: relative;
+    width: 20%;
+    height: 3vh;
+    margin: 15px 0;
+    line-height: 3;
+    overflow: hidden;
+
+    .select {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0 0 0 0.5rem;
+        background-color: $gray-color;
+        font-size: 1.3rem;
+        color: #000;
+        cursor: pointer;
+    }
+
+    &::after {
+        content: '\25BC';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0 1rem;
+        background: #adadad;
+        pointer-events: none;
+      }
 }

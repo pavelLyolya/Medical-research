@@ -1,6 +1,6 @@
 import { leagues as leaguesActionType } from '../actions/actionTypes';
 
-const initialState = [
+export const initialState = [
     {
         id: 2021,
         name: 'English Premier League',
