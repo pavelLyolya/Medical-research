@@ -1,8 +1,8 @@
 import { activePage } from './actionTypes';
 
-const changeActivePage = e => ({
+const changeActivePage = pageName => ({
     type: activePage.CHANGE_ACTIVE_PAGE,
-    pageName: e.target.textContent,
+    pageName,
 });
 
 export default changeActivePage;
