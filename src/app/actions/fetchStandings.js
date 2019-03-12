@@ -1,6 +1,6 @@
 import { leagues } from './actionTypes';
 import { getAllStandings } from '../services/api';
-import mapObjectsToArrays from '../services/validation';
+import { mapObjectsToArrays } from '../services/validation';
 import findLeague from '../services/functions';
 
 const fetchingStandings = idLeague => ({
