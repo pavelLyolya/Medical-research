@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import changeActivePage from '../actions/changeActivePage';
-import { pageNames } from '../actions/actionTypes';
+import { pageNames } from '../services/constants';
 import Navigation from '../components/Header/Navigation';
 
 const mapStateToProps = state => ({

@@ -24,8 +24,3 @@ export const activeLeague = {
 export const activePage = {
     CHANGE_ACTIVE_PAGE: 'CHANGE_ACTIVE_PAGE',
 };
-
-export const pageNames = {
-    TABLE: 'table',
-    TEAMS: 'teams',
-};

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { pageNames } from '../../actions/actionTypes';
+import { pageNames } from '../../services/constants';
 
 const Navigation = ({ activePageName, activateTable, activateTeams }) => (
     <nav className='navigation'>

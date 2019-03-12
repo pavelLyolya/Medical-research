@@ -1,9 +1,5 @@
 import axios from 'axios';
-
-const URLS = {
-    competitions: '/competitions',
-    standings: '/standings?standingType=TOTAL',
-};
+import { URLS } from '../constants';
 
 const api = axios.create({
     baseURL: 'https://api.football-data.org/v2',
