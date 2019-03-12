@@ -1,4 +1,5 @@
 import { leagues as leaguesActionType } from '../actions/actionTypes';
+import findLeague from '../services/functions';
 
 export const initialState = [
     {
@@ -75,18 +76,38 @@ export const initialState = [
 
 const leagues = (state = initialState, action) => {
     let newState = null;
+    let foundLeague = null;
     let standings = null;
+    let teams = null;
 
     switch (action.type) {
         case leaguesActionType.FETCHING_STANDINGS:
             newState = state.slice();
-            newState.find(league => league.id === action.idLeague).standings.isFething = true;
-            return newState;
+            foundLeague = findLeague(newState, action.idLeague);
+            if (foundLeague) {
+                foundLeague.standings.isFething = true;
+                return newState;
+            }
+            return state;
         case leaguesActionType.STANDINGS_FETCHED:
             newState = state.slice();
-            ({ standings } = newState.find(league => league.id === action.idLeague));
+            ({ standings } = findLeague(newState, action.idLeague));
             standings.isFething = false;
             standings.items = action.data;
+            return newState;
+        case leaguesActionType.FETCHING_TEAMS:
+            newState = state.slice();
+            foundLeague = findLeague(newState, action.idLeague);
+            if (foundLeague) {
+                foundLeague.standings.isFething = true;
+                return newState;
+            }
+            return state;
+        case leaguesActionType.TEAMS_FETCHED:
+            newState = state.slice();
+            ({ teams } = findLeague(newState, action.idLeague));
+            teams.isFething = false;
+            teams.items = action.data;
             return newState;
         default:
             return state;
