@@ -17,6 +17,11 @@ $shadow: 0 2px 3px #616161;
     }
 }
 
+.teamsSubheader {
+    display: flex;
+    justify-content: space-between;
+}
+
 .leagueSelect {
     position: relative;
     width: 250px;
@@ -48,6 +53,17 @@ $shadow: 0 2px 3px #616161;
         text-align: center;
         background: #adadad;
         pointer-events: none;
+    }
+}
+
+.favoritesButton {
+    width: 250px;
+    height: 30px;
+    margin: 15px 0;
+    box-shadow: $shadow;
+
+    &:hover {
+        cursor: pointer;
     }
 }
 
@@ -93,9 +109,16 @@ $shadow: 0 2px 3px #616161;
             font-size: 1.5rem;
         }
     }
+
+    .addToFavorite:hover {
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 425px) {
+    .teamsSubheader {
+        flex-direction: column;
+    }
 	.teamsList {
         flex-direction: column;
         align-items: center;
@@ -103,7 +126,7 @@ $shadow: 0 2px 3px #616161;
     .teamItem {
         width: 90%;
     }
-    .leagueSelect {
-        margin: 3%;
+    .leagueSelect, .favoritesButton {
+        margin: 2% 3%;
     }
 }

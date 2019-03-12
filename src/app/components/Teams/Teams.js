@@ -2,6 +2,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import TeamsHeader from './TeamsHeader';
 import LeagueSelect from './LeagueSelect';
+import FavoritesButton from './FavoritesButton';
 import { initialState } from '../../reducers/leagues';
 import TeamsList from './TeamsList';
 import '../../../css/Teams.scss';
@@ -38,7 +39,10 @@ class Teams extends React.Component {
         return (
             <section className='teamsSection'>
                 <TeamsHeader headerName={'Active League Name'} />
-                <LeagueSelect leaguesArray={initialState} />
+                <div className='teamsSubheader'>
+                    <LeagueSelect leaguesArray={initialState} />
+                    <FavoritesButton />
+                </div>
                 <TeamsList teamsArray={teamsArray} />
             </section>
         );

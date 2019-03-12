@@ -12,7 +12,7 @@ const TeamItem = ({
         <div className='teamInfo'>
             <Link to={`/teams/${teamId}`} className='teamName'>{name}</Link>
             <span className='teamShortName'>short name: {shortName}</span>
-            <button>Add team to favorites</button>
+            <button className='addToFavorite'>Add team to favorites</button>
         </div>
     </div>
 );
