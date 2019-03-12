@@ -61,6 +61,7 @@
     display: inline-block;
     margin: 4px 2px;
     padding: 3% 10px;
+    box-sizing: border-box;
     border: none;
     border-radius: 8px;
     background-color: #f3f3f3;
@@ -80,7 +81,7 @@
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     .appHeader {
         justify-content: space-between;
     }
