@@ -1,8 +1,6 @@
-import { activePage, pageNames } from '../actions/actionTypes';
+import { activePage } from '../actions/actionTypes';
 
-const defaultActivePage = pageNames.TABLE;
-
-const activePageName = (state = defaultActivePage, action) => {
+const activePageName = (state = '', action) => {
     switch (action.type) {
         case activePage.CHANGE_ACTIVE_PAGE:
             return action.pageName;
