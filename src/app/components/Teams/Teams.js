@@ -1,10 +1,11 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import TeamsHeader from './TeamsHeader';
 import LeagueSelect from './LeagueSelect';
 import FavoritesButton from './FavoritesButton';
-import { initialState } from '../../reducers/leagues';
 import TeamsList from './TeamsList';
+import { initialState } from '../../reducers/leagues';
+// import { getAllTeams } from '../../services/api';
 import '../../../css/Teams.scss';
 
 const teamsArray = [
@@ -35,6 +36,10 @@ const teamsArray = [
 ];
 
 class Teams extends React.Component {
+    componentDidMount() {
+        this.props.fetchTeams(this.props.activeLeagueId);
+    }
+
     render() {
         return (
             <section className='teamsSection'>
@@ -49,8 +54,11 @@ class Teams extends React.Component {
     }
 }
 
-// Teams.propTypes = {
-//     activeLeagueName: PropTypes.string.isRequired,
-// };
+Teams.propTypes = {
+    activeLeagueId: PropTypes.number.isRequired,
+    leagues: PropTypes.array.isRequired,
+    changeActiveLeague: PropTypes.func.isRequired,
+    fetchTeams: PropTypes.func.isRequired,
+};
 
 export default Teams;

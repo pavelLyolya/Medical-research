@@ -6,4 +6,5 @@ export const pageNames = {
 export const URLS = {
     competitions: '/competitions',
     standings: '/standings?standingType=TOTAL',
+    teams: '/teams',
 };

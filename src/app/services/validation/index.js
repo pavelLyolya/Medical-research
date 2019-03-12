@@ -1,4 +1,4 @@
-const mapObjectsToArrays = objectsArray => objectsArray.map(teamStanding => ({
+export const mapObjectsToArrays = objectsArray => objectsArray.map(teamStanding => ({
     id: teamStanding.team.id,
     standing: [
         teamStanding.position,
@@ -13,4 +13,9 @@ const mapObjectsToArrays = objectsArray => objectsArray.map(teamStanding => ({
     ],
 }));
 
-export default mapObjectsToArrays;
+export const mapTeamsArray = teams => teams.map(item => ({
+    teamId: item.id,
+    name: item.name,
+    shortName: item.shortName,
+    imgURL: item.crestUrl,
+}));
