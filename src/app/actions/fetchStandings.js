@@ -1,7 +1,7 @@
 import { leagues } from './actionTypes';
 import { getAllStandings } from '../services/api';
 import { mapObjectsToArrays } from '../services/validation';
-import findLeague from '../services/functions';
+import { findObjectOnId } from '../services/functions';
 
 const fetchingStandings = idLeague => ({
     type: leagues.FETCHING_STANDINGS,
@@ -15,7 +15,7 @@ const standingsFetched = (idLeague, data) => ({
 });
 
 const shouldFetchStandings = (state, idLeague) => {
-    const foundLeague = findLeague(state.leagues, idLeague);
+    const foundLeague = findObjectOnId(state.leagues, idLeague);
     if (foundLeague) {
         if (foundLeague.standings.items) {
             return false;

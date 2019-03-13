@@ -4,7 +4,7 @@ import TeamsHeader from './TeamsHeader';
 import LeagueSelect from './LeagueSelect';
 import FavoritesButton from './FavoritesButton';
 import TeamsList from './TeamsList';
-import findLeague from '../../services/functions';
+import { findObjectOnId } from '../../services/functions';
 import '../../../css/Teams.scss';
 
 class Teams extends React.Component {
@@ -22,7 +22,7 @@ class Teams extends React.Component {
     }
 
     render() {
-        const foundLeague = findLeague(this.props.leagues, this.props.activeLeagueId);
+        const foundLeague = findObjectOnId(this.props.leagues, this.props.activeLeagueId);
         return (
             <section className='teamsSection'>
                 <TeamsHeader
