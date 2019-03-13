@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { addTeamToLocalStorage } from '../../services/functions';
+import { addTeamToLocalStorage, deleteTeamFromLocalStorage } from '../../services/functions';
 
 class TeamItem extends React.PureComponent {
     constructor(props) {
@@ -19,6 +19,9 @@ class TeamItem extends React.PureComponent {
                 this.props.isFavorite,
             );
             this.props.addFavoriteTeam(this.props.teamId, this.props.activeLeagueId);
+        } else {
+            deleteTeamFromLocalStorage(this.props.teamId);
+            this.props.deleteFavoriteTeam(this.props.teamId, this.props.activeLeagueId);
         }
     }
 
@@ -48,9 +51,15 @@ TeamItem.propTypes = {
     imgURL: PropTypes.string.isRequired,
     isFavorite: PropTypes.bool.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
+    deleteFavoriteTeam: PropTypes.func.isRequired,
 };
 
-const TeamsList = ({ teamsArray, activeLeagueId, addFavoriteTeam }) => teamsArray && (
+const TeamsList = ({
+    teamsArray,
+    activeLeagueId,
+    addFavoriteTeam,
+    deleteFavoriteTeam,
+}) => teamsArray && (
     <section className='teamsList'>
         {teamsArray.map(item => <TeamItem
             key={item.teamId}
@@ -61,6 +70,7 @@ const TeamsList = ({ teamsArray, activeLeagueId, addFavoriteTeam }) => teamsArra
             isFavorite={item.isFavorite}
             activeLeagueId={activeLeagueId}
             addFavoriteTeam={addFavoriteTeam}
+            deleteFavoriteTeam={deleteFavoriteTeam}
         />)}
     </section>
 );
@@ -68,6 +78,7 @@ const TeamsList = ({ teamsArray, activeLeagueId, addFavoriteTeam }) => teamsArra
 TeamsList.propTypes = {
     activeLeagueId: PropTypes.number.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
+    deleteFavoriteTeam: PropTypes.func.isRequired,
     teamsArray: PropTypes.array,
 };
 

@@ -123,6 +123,20 @@ const leagues = (state = initialState, action) => {
                 return state;
             }
             return state;
+        case leaguesActionType.DELETE_FAVORITE_TEAM:
+            newState = state.slice();
+            foundLeague = findObjectOnId(newState, action.idLeague);
+            if (foundLeague) {
+                const foundTeam = foundLeague.teams.items.find(
+                    team => team.teamId === action.teamId,
+                );
+                if (foundTeam) {
+                    foundTeam.isFavorite = false;
+                    return newState;
+                }
+                return state;
+            }
+            return state;
         default:
             return state;
     }

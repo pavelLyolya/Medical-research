@@ -40,6 +40,7 @@ class Teams extends React.Component {
                     teamsArray={foundLeague.teams.items}
                     activeLeagueId={this.props.activeLeagueId}
                     addFavoriteTeam={this.props.addFavoriteTeam}
+                    deleteFavoriteTeam={this.props.deleteFavoriteTeam}
                 />
             </section>
         );
@@ -52,6 +53,7 @@ Teams.propTypes = {
     changeActiveLeague: PropTypes.func.isRequired,
     fetchTeams: PropTypes.func.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
+    deleteFavoriteTeam: PropTypes.func.isRequired,
 };
 
 export default Teams;

@@ -31,3 +31,12 @@ export const addTeamToLocalStorage = (teamId, name, shortName, imgURL, isFavorit
     });
     window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
 };
+
+export const deleteTeamFromLocalStorage = (teamId) => {
+    let favoriteTeams = window.localStorage.getItem('favoriteTeams');
+    if (favoriteTeams) {
+        favoriteTeams = JSON.parse(favoriteTeams);
+    }
+    favoriteTeams = favoriteTeams.filter(team => team.teamId !== teamId);
+    window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
+};
