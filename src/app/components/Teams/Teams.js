@@ -8,8 +8,17 @@ import findLeague from '../../services/functions';
 import '../../../css/Teams.scss';
 
 class Teams extends React.Component {
+    constructor(props) {
+        super(props);
+        this.changeActiveLeague = this.changeActiveLeague.bind(this);
+    }
+
     componentDidMount() {
         this.props.fetchTeams(this.props.activeLeagueId);
+    }
+
+    changeActiveLeague(e) {
+        this.props.changeActiveLeague(+e.target.value);
     }
 
     render() {
@@ -20,7 +29,11 @@ class Teams extends React.Component {
                     headerName={foundLeague.name || 'League Name'}
                 />
                 <div className='teamsSubheader'>
-                    <LeagueSelect leaguesArray={this.props.leagues} />
+                    <LeagueSelect
+                        activeLeagueId={this.props.activeLeagueId}
+                        leaguesArray={this.props.leagues}
+                        changeActiveLeague={this.changeActiveLeague}
+                    />
                     <FavoritesButton />
                 </div>
                 <TeamsList teamsArray={foundLeague.teams.items} />
