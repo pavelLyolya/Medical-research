@@ -40,6 +40,11 @@ $shadow: 0 2px 3px #616161;
         font-size: 13px;
         color: #000;
         cursor: pointer;
+
+        &:disabled {
+            color: rgb(187, 187, 187);
+            cursor: default;
+        }
     }
 
     &::after {
