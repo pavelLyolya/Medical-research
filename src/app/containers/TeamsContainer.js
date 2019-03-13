@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import changeActiveLeague from '../actions/changeActiveLeague';
 import fetchTeams from '../actions/fetchTeams';
+import addFavoriteTeam from '../actions/addFavoriteTeam';
 import Teams from '../components/Teams/Teams';
 
 const mapStateToProps = state => ({
@@ -14,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
         dispatch(fetchTeams(id));
     },
     fetchTeams: id => dispatch(fetchTeams(id)),
+    addFavoriteTeam: (teamId, idLeague) => dispatch(addFavoriteTeam(teamId, idLeague)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Teams);

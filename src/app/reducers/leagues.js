@@ -109,6 +109,20 @@ const leagues = (state = initialState, action) => {
             teams.isFething = false;
             teams.items = action.data;
             return newState;
+        case leaguesActionType.ADD_FAVORITE_TEAM:
+            newState = state.slice();
+            foundLeague = findObjectOnId(newState, action.idLeague);
+            if (foundLeague) {
+                const foundTeam = foundLeague.teams.items.find(
+                    team => team.teamId === action.teamId,
+                );
+                if (foundTeam) {
+                    foundTeam.isFavorite = true;
+                    return newState;
+                }
+                return state;
+            }
+            return state;
         default:
             return state;
     }

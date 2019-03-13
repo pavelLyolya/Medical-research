@@ -14,3 +14,20 @@ export const isFavorite = (teamId) => {
     }
     return false;
 };
+
+export const addTeamToLocalStorage = (teamId, name, shortName, imgURL, isFavoriteTeam) => {
+    let favoriteTeams = window.localStorage.getItem('favoriteTeams');
+    if (favoriteTeams) {
+        favoriteTeams = JSON.parse(favoriteTeams);
+    } else {
+        favoriteTeams = [];
+    }
+    favoriteTeams.push({
+        teamId,
+        name,
+        shortName,
+        imgURL,
+        isFavorite: isFavoriteTeam,
+    });
+    window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
+};

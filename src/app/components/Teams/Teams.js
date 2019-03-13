@@ -36,7 +36,11 @@ class Teams extends React.Component {
                     />
                     <FavoritesButton />
                 </div>
-                <TeamsList teamsArray={foundLeague.teams.items} />
+                <TeamsList
+                    teamsArray={foundLeague.teams.items}
+                    activeLeagueId={this.props.activeLeagueId}
+                    addFavoriteTeam={this.props.addFavoriteTeam}
+                />
             </section>
         );
     }
@@ -47,6 +51,7 @@ Teams.propTypes = {
     leagues: PropTypes.array.isRequired,
     changeActiveLeague: PropTypes.func.isRequired,
     fetchTeams: PropTypes.func.isRequired,
+    addFavoriteTeam: PropTypes.func.isRequired,
 };
 
 export default Teams;
