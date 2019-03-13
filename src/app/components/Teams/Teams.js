@@ -23,21 +23,35 @@ class Teams extends React.Component {
 
     render() {
         const foundLeague = findObjectOnId(this.props.leagues, this.props.activeLeagueId);
+        let teamsArray = foundLeague.teams.items;
+        if (this.props.isFavoritesShown) {
+            const favoriteTeams = window.localStorage.getItem('favoriteTeams');
+            if (favoriteTeams) {
+                teamsArray = JSON.parse(favoriteTeams);
+            } else {
+                teamsArray = [];
+            }
+        }
         return (
             <section className='teamsSection'>
                 <TeamsHeader
                     headerName={foundLeague.name || 'League Name'}
+                    isFavoritesShown={this.props.isFavoritesShown}
                 />
                 <div className='teamsSubheader'>
                     <LeagueSelect
                         activeLeagueId={this.props.activeLeagueId}
                         leaguesArray={this.props.leagues}
                         changeActiveLeague={this.changeActiveLeague}
+                        isFavoritesShown={this.props.isFavoritesShown}
                     />
-                    <FavoritesButton />
+                    <FavoritesButton
+                        isFavoritesShown={this.props.isFavoritesShown}
+                        toggleShowingFavorites={this.props.toggleShowingFavorites}
+                    />
                 </div>
                 <TeamsList
-                    teamsArray={foundLeague.teams.items}
+                    teamsArray={teamsArray}
                     activeLeagueId={this.props.activeLeagueId}
                     addFavoriteTeam={this.props.addFavoriteTeam}
                     deleteFavoriteTeam={this.props.deleteFavoriteTeam}
@@ -54,6 +68,8 @@ Teams.propTypes = {
     fetchTeams: PropTypes.func.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
+    toggleShowingFavorites: PropTypes.func.isRequired,
+    isFavoritesShown: PropTypes.bool.isRequired,
 };
 
 export default Teams;

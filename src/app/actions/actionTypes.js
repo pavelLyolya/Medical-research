@@ -18,3 +18,5 @@ export const activeLeague = {
 export const activePage = {
     CHANGE_ACTIVE_PAGE: 'CHANGE_ACTIVE_PAGE',
 };
+
+export const TOGGLE_SHOWING_FAVORITES = 'TOGGLE_SHOWING_FAVORITES';
