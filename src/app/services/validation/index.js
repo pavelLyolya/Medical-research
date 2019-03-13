@@ -1,3 +1,5 @@
+import { isFavorite } from '../functions';
+
 export const mapObjectsToArrays = objectsArray => objectsArray.map(teamStanding => ({
     id: teamStanding.team.id,
     standing: [
@@ -18,4 +20,5 @@ export const mapTeamsArray = teams => teams.map(item => ({
     name: item.name,
     shortName: item.shortName,
     imgURL: item.crestUrl,
+    isFavorite: isFavorite(item.id),
 }));

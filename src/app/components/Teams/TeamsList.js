@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const TeamItem = ({
-    teamId, name, shortName, imgURL,
+    teamId, name, shortName, imgURL, isFavorite,
 }) => (
     <div className='teamItem'>
         <div className='crestImg'>
@@ -12,7 +12,7 @@ const TeamItem = ({
         <div className='teamInfo'>
             <Link to={`/teams/${teamId}`} className='teamName'>{name}</Link>
             <span className='teamShortName'>short name: {shortName}</span>
-            <button className='addToFavorite'>Add team to favorites</button>
+            <button className='addToFavorite'>{isFavorite ? 'Remove from favorites' : 'Add to favorites'}</button>
         </div>
     </div>
 );
@@ -22,6 +22,7 @@ TeamItem.propTypes = {
     name: PropTypes.string.isRequired,
     shortName: PropTypes.string.isRequired,
     imgURL: PropTypes.string.isRequired,
+    isFavorite: PropTypes.bool.isRequired,
 };
 
 const TeamsList = ({ teamsArray }) => teamsArray && (
@@ -33,6 +34,7 @@ const TeamsList = ({ teamsArray }) => teamsArray && (
                 name={item.name}
                 shortName={item.shortName}
                 imgURL={item.imgURL}
+                isFavorite={item.isFavorite}
             />
         ))}
     </section>
