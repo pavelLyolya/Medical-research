@@ -24,12 +24,12 @@ TeamItem.propTypes = {
     imgURL: PropTypes.string.isRequired,
 };
 
-const TeamsList = ({ teamsArray }) => (
+const TeamsList = ({ teamsArray }) => teamsArray && (
     <section className='teamsList'>
         {teamsArray.map(item => (
             <TeamItem
-                key={item.id}
-                teamId={item.id}
+                key={item.teamId}
+                teamId={item.teamId}
                 name={item.name}
                 shortName={item.shortName}
                 imgURL={item.imgURL}
@@ -39,7 +39,7 @@ const TeamsList = ({ teamsArray }) => (
 );
 
 TeamsList.propTypes = {
-    teamsArray: PropTypes.array.isRequired,
+    teamsArray: PropTypes.array,
 };
 
 export default TeamsList;
