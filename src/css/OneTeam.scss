@@ -1,3 +1,48 @@
+@import './colorAndFont';
+
+$gray-color: #dadada;
+$shadow: 0 2px 3px #616161;
+
+.oneTeamHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.oneTeamSection .teamsList {
+    display: inline-block;
+    width: 49%;
+
+    .teamItem {
+        width: 100%;
+    }
+}
+
+.oneTeamControlls {
+    width: 49%;
+    margin: 10px 0;
+
+    .teamControll {
+        width: 40%;
+        height: 4vh;
+        border: none;
+        background-color: #b1dab1;
+        box-shadow: $shadow;
+        font-size: 2rem;
+
+        &:first-child {
+            margin-right: 10px;
+        }
+        &:focus {
+            outline: none;
+            background-color: $main-color;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 .oneTeamContent {
     display: flex;
     justify-content: space-between;
@@ -7,18 +52,133 @@
     width: 49%;
 }
 
-// .playerItem {
-//     // display: flex;
-// }
+.playerItem {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 12vh;
+    box-sizing: border-box;
+    box-shadow: $shadow;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: $gray-color;
+
+    .playerInfo {
+        display: flex;
+        flex-direction: column;
+
+        .playerName {
+            color: #000;
+            font-size: 3rem;
+        }
+        .restInfo {
+            font-size: 1.5rem;
+        }
+    }
+
+    .shirtNumber {
+        position: relative;
+        height: 11vh;
+
+        span {
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 3rem;
+        }
+
+        img {
+            width: auto;
+            height: 100%;
+        }
+    }
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 5vh;
+    box-sizing: border-box;
+    box-shadow: $shadow;
+    margin: 10px 0;
+    background-color: $main-color;
+
+    .chooseCount {
+        font-size: 1.6rem;
+        color: #fff;
+        background-color: inherit;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    span {
+        display: inline-block;
+        height: 100%;
+        line-height: 5vh;
+        font-size: 1.9rem;
+        color: #fff;
+
+        &:not(.pageNumber):hover {
+            color: $gray-color;
+            cursor: pointer;
+        }
+    }
+}
+
+.tweetItem {
+    box-sizing: border-box;
+    box-shadow: $shadow;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: $gray-color;
+
+    .tweetHeader {
+        margin-bottom: 3%;
+        font-size: 2.5rem;
+    }
+
+    .tweetText {
+        font-size: 1.8rem;
+    }
+}
 
 
-@media (max-width: 425px) {
-    .oneTeamSection {
+@media (max-width: 1023px) {
+    .oneTeamSection .teamsList {
+        width: 90%;
+    }
+    .oneTeamHeader {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .oneTeamControlls {
+        display: flex;
+        justify-content: center;
+        width: 90%;
+    }
+    .oneTeamControlls .teamControll {
+        height: 4vmax;
+    }
+    .pagination {
+        height: 5vmax;
+        span {
+            line-height: 5vmax;
+        }
+    }
+    .oneTeamContent {
         flex-direction: column;
         align-items: center;
     }
     .players, .tweets {
         width: 90%;
+    }
+    .playerItem .shirtNumber {
+        height: 11vmax;
     }
     .leagueSelect, .favoritesButton {
         margin: 2% 3%;

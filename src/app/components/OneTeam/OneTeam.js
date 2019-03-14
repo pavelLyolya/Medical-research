@@ -3,6 +3,7 @@ import React from 'react';
 import TeamsList from '../Teams/TeamsList';
 import Players from './Players';
 import Tweets from './Tweets';
+import OneTeamControlls from './OneTeamControlls';
 import '../../../css/OneTeam.scss';
 
 const team = [{
@@ -16,7 +17,10 @@ class OneTeam extends React.Component {
     render() {
         return (
             <section className='oneTeamSection'>
-                <TeamsList teamsArray={team} />
+                <header className='oneTeamHeader'>
+                    <TeamsList teamsArray={team} />
+                    <OneTeamControlls />
+                </header>
                 <section className='oneTeamContent'>
                     <Players />
                     <Tweets />
