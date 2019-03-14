@@ -27,7 +27,7 @@ export const addTeamToLocalStorage = (teamId, name, shortName, imgURL, isFavorit
         name,
         shortName,
         imgURL,
-        isFavorite: isFavoriteTeam,
+        isFavorite: !isFavoriteTeam,
     });
     window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
 };
