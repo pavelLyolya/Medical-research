@@ -15,7 +15,14 @@ export const isFavorite = (teamId) => {
     return false;
 };
 
-export const addTeamToLocalStorage = (teamId, name, shortName, imgURL, isFavoriteTeam) => {
+export const addTeamToLocalStorage = (
+    teamId,
+    name,
+    shortName,
+    imgURL,
+    isFavoriteTeam,
+    leagueId,
+) => {
     let favoriteTeams = window.localStorage.getItem('favoriteTeams');
     if (favoriteTeams) {
         favoriteTeams = JSON.parse(favoriteTeams);
@@ -28,6 +35,7 @@ export const addTeamToLocalStorage = (teamId, name, shortName, imgURL, isFavorit
         shortName,
         imgURL,
         isFavorite: !isFavoriteTeam,
+        leagueId,
     });
     window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
 };
@@ -37,6 +45,14 @@ export const deleteTeamFromLocalStorage = (teamId) => {
     if (favoriteTeams) {
         favoriteTeams = JSON.parse(favoriteTeams);
     }
-    favoriteTeams = favoriteTeams.filter(team => team.teamId !== teamId);
+    let deletingLeagueIndex;
+    favoriteTeams = favoriteTeams.filter((team) => {
+        if (team.teamId !== teamId) {
+            return true;
+        }
+        deletingLeagueIndex = team.leagueId;
+        return false;
+    });
     window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
+    return deletingLeagueIndex;
 };

@@ -17,11 +17,12 @@ class TeamItem extends React.PureComponent {
                 this.props.shortName,
                 this.props.imgURL,
                 this.props.isFavorite,
+                this.props.activeLeagueId,
             );
             this.props.addFavoriteTeam(this.props.teamId, this.props.activeLeagueId);
         } else {
-            deleteTeamFromLocalStorage(this.props.teamId);
-            this.props.deleteFavoriteTeam(this.props.teamId, this.props.activeLeagueId);
+            const deletingLeagueIndex = deleteTeamFromLocalStorage(this.props.teamId);
+            this.props.deleteFavoriteTeam(this.props.teamId, deletingLeagueIndex);
         }
     }
 
