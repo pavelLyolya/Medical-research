@@ -4,13 +4,14 @@ import Header from './Header/Header';
 import Footer from './Footer';
 import TableStandingsContainer from '../containers/TableStandingsContainer';
 import TeamsContainer from '../containers/TeamsContainer';
+import OneTeam from './OneTeam/OneTeam';
 
 const App = () => (
     <Router>
         <React.Fragment>
             <Header />
             <main>
-                <Route exact path='/' />
+                <Route exact path='/' component={OneTeam} />
                 <Route path='/table' component={TableStandingsContainer} />
                 <Route path='/teams' component={TeamsContainer} />
             </main>

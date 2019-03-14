@@ -1,0 +1,26 @@
+.oneTeamContent {
+    display: flex;
+    justify-content: space-between;
+}
+
+.players, .tweets {
+    width: 49%;
+}
+
+// .playerItem {
+//     // display: flex;
+// }
+
+
+@media (max-width: 425px) {
+    .oneTeamSection {
+        flex-direction: column;
+        align-items: center;
+    }
+    .players, .tweets {
+        width: 90%;
+    }
+    .leagueSelect, .favoritesButton {
+        margin: 2% 3%;
+    }
+}
