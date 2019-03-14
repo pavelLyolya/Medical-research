@@ -2,7 +2,6 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import TeamsHeader from '../Teams/TeamsHeader';
 import PlayersList from './PlayersList';
-import '../../../css/OneTeam.scss';
 
 const players = [
     {
@@ -10,7 +9,7 @@ const players = [
         name: 'Bernd Leno',
         position: 'Goalkeeper',
         dateOfBirth: '1992-03-04T00:00:00Z',
-        shirtNumber: 2,
+        shirtNumber: 12,
     },
     {
         id: 2,
@@ -31,7 +30,7 @@ const players = [
         name: 'Bernd Leno',
         position: 'Goalkeeper',
         dateOfBirth: '1992-03-04T00:00:00Z',
-        shirtNumber: 2,
+        shirtNumber: 49,
     },
 ];
 
@@ -46,8 +45,8 @@ class Players extends React.Component {
     }
 }
 
-// Teams.propTypes = {
-//     activeLeagueName: PropTypes.string.isRequired,
+// Players.propTypes = {
+//     players: PropTypes.array.isRequired,
 // };
 
 export default Players;
