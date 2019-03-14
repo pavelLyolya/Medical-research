@@ -49,7 +49,7 @@ TeamItem.propTypes = {
     teamId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     shortName: PropTypes.string.isRequired,
-    imgURL: PropTypes.string.isRequired,
+    imgURL: PropTypes.string,
     isFavorite: PropTypes.bool.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
