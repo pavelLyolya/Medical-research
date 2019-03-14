@@ -6,7 +6,7 @@ const FavoritesButton = ({ isFavoritesShown, toggleShowingFavorites }) => (
         className='favoritesButton'
         onClick={toggleShowingFavorites}
     >
-        {isFavoritesShown ? 'Hide favorite teams' : 'Show only favorite teams'}
+        {isFavoritesShown ? 'Show all teams' : 'Show only favorite teams'}
     </button>
 );
 
