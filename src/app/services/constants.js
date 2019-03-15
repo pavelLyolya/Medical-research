@@ -8,3 +8,5 @@ export const URLS = {
     standings: '/standings?standingType=TOTAL',
     teams: '/teams',
 };
+
+export const FAVORITE_TEAMS_KEY = 'favoriteTeams';

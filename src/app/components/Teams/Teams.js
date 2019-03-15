@@ -24,41 +24,40 @@ class Teams extends React.Component {
         const foundLeague = this.props.leagues.find(
             league => league.id === this.props.activeLeagueId,
         );
-        if (foundLeague) {
-            let teamsArray;
-            if (this.props.isFavoritesShown) {
-                teamsArray = this.props.favoriteTeams;
-            } else {
-                teamsArray = foundLeague.teams.items;
-            }
-            return (
-                <section className='teamsSection'>
-                    <TeamsHeader
-                        headerName={foundLeague.name || 'League Name'}
+        let teamsArray;
+        if (this.props.isFavoritesShown) {
+            teamsArray = this.props.favoriteTeams;
+        } else if (foundLeague) {
+            teamsArray = foundLeague.teams.items;
+        } else {
+            return null;
+        }
+        return (
+            <section className='teamsSection'>
+                <TeamsHeader
+                    headerName={foundLeague.name || 'League Name'}
+                    isFavoritesShown={this.props.isFavoritesShown}
+                />
+                <div className='teamsSubheader'>
+                    <LeagueSelect
+                        activeLeagueId={this.props.activeLeagueId}
+                        leaguesArray={this.props.leagues}
+                        changeActiveLeague={this.changeActiveLeague}
                         isFavoritesShown={this.props.isFavoritesShown}
                     />
-                    <div className='teamsSubheader'>
-                        <LeagueSelect
-                            activeLeagueId={this.props.activeLeagueId}
-                            leaguesArray={this.props.leagues}
-                            changeActiveLeague={this.changeActiveLeague}
-                            isFavoritesShown={this.props.isFavoritesShown}
-                        />
-                        <FavoritesButton
-                            isFavoritesShown={this.props.isFavoritesShown}
-                            toggleShowingFavorites={this.props.toggleShowingFavorites}
-                        />
-                    </div>
-                    <TeamsList
-                        teamsArray={teamsArray}
-                        activeLeagueId={this.props.activeLeagueId}
-                        addFavoriteTeam={this.props.addFavoriteTeam}
-                        deleteFavoriteTeam={this.props.deleteFavoriteTeam}
+                    <FavoritesButton
+                        isFavoritesShown={this.props.isFavoritesShown}
+                        toggleShowingFavorites={this.props.toggleShowingFavorites}
                     />
-                </section>
-            );
-        }
-        return null;
+                </div>
+                <TeamsList
+                    teamsArray={teamsArray}
+                    activeLeagueId={this.props.activeLeagueId}
+                    addFavoriteTeam={this.props.addFavoriteTeam}
+                    deleteFavoriteTeam={this.props.deleteFavoriteTeam}
+                />
+            </section>
+        );
     }
 }
 

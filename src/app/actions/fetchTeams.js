@@ -15,13 +15,7 @@ const teamsFetched = (idLeague, data) => ({
 
 const shouldFetchTeams = (state, idLeague) => {
     const foundLeague = state.leagues.find(league => league.id === idLeague);
-    if (foundLeague) {
-        if (foundLeague.teams.items) {
-            return false;
-        }
-        return true;
-    }
-    return false;
+    return !foundLeague || (foundLeague && !foundLeague.teams.items);
 };
 
 const fetchTeams = id => async (dispatch, getState) => {

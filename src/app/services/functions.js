@@ -1,3 +1,5 @@
+import { FAVORITE_TEAMS_KEY } from './constants';
+
 export const findTeamInLeagues = (leaguesArray, leagueId, teamId) => {
     const foundLeague = leaguesArray.find(league => league.id === leagueId);
     if (foundLeague) {
@@ -12,7 +14,7 @@ export const findTeamInLeagues = (leaguesArray, leagueId, teamId) => {
 };
 
 export const isFavorite = (teamId) => {
-    let favoriteTeams = window.localStorage.getItem('favoriteTeams');
+    let favoriteTeams = window.localStorage.getItem(FAVORITE_TEAMS_KEY);
     favoriteTeams = JSON.parse(favoriteTeams);
     if (favoriteTeams) {
         return favoriteTeams.some(item => teamId === item.teamId);
@@ -21,7 +23,7 @@ export const isFavorite = (teamId) => {
 };
 
 export const getTeamsFromLocalStorage = () => {
-    let favoriteTeams = window.localStorage.getItem('favoriteTeams');
+    let favoriteTeams = window.localStorage.getItem(FAVORITE_TEAMS_KEY);
     if (favoriteTeams) {
         favoriteTeams = JSON.parse(favoriteTeams);
     } else {
@@ -43,7 +45,7 @@ export const addTeamToLocalStorage = (
         isFavorite: !team.isFavorite,
         leagueId,
     });
-    window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
+    window.localStorage.setItem(FAVORITE_TEAMS_KEY, JSON.stringify(favoriteTeams));
 };
 
 export const deleteTeamFromLocalStorage = (teamId) => {
@@ -56,6 +58,6 @@ export const deleteTeamFromLocalStorage = (teamId) => {
         deletingLeagueIndex = team.leagueId;
         return false;
     });
-    window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
+    window.localStorage.setItem(FAVORITE_TEAMS_KEY, JSON.stringify(favoriteTeams));
     return deletingLeagueIndex;
 };
