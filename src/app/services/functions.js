@@ -20,36 +20,34 @@ export const isFavorite = (teamId) => {
     return false;
 };
 
-export const addTeamToLocalStorage = (
-    teamId,
-    name,
-    shortName,
-    imgURL,
-    isFavoriteTeam,
-    leagueId,
-) => {
+export const getTeamsFromLocalStorage = () => {
     let favoriteTeams = window.localStorage.getItem('favoriteTeams');
     if (favoriteTeams) {
         favoriteTeams = JSON.parse(favoriteTeams);
     } else {
         favoriteTeams = [];
     }
+    return favoriteTeams;
+};
+
+export const addTeamToLocalStorage = (
+    team,
+    leagueId,
+) => {
+    const favoriteTeams = getTeamsFromLocalStorage();
     favoriteTeams.push({
-        teamId,
-        name,
-        shortName,
-        imgURL,
-        isFavorite: !isFavoriteTeam,
+        teamId: team.teamId,
+        name: team.name,
+        shortName: team.shortName,
+        imgURL: team.imgURL,
+        isFavorite: !team.isFavorite,
         leagueId,
     });
     window.localStorage.setItem('favoriteTeams', JSON.stringify(favoriteTeams));
 };
 
 export const deleteTeamFromLocalStorage = (teamId) => {
-    let favoriteTeams = window.localStorage.getItem('favoriteTeams');
-    if (favoriteTeams) {
-        favoriteTeams = JSON.parse(favoriteTeams);
-    }
+    let favoriteTeams = getTeamsFromLocalStorage();
     let deletingLeagueIndex;
     favoriteTeams = favoriteTeams.filter((team) => {
         if (team.teamId !== teamId) {

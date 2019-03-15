@@ -28,8 +28,8 @@ const fetchTeams = id => async (dispatch, getState) => {
     if (shouldFetchTeams(getState(), id)) {
         dispatch(fetchingTeams(id));
         const data = await getAllTeams(id);
-        const standingsArray = mapTeamsArray(data.teams);
-        dispatch(teamsFetched(id, standingsArray));
+        const teamsArray = mapTeamsArray(data.teams);
+        dispatch(teamsFetched(id, teamsArray));
     }
 };
 

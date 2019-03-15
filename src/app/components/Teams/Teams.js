@@ -25,14 +25,11 @@ class Teams extends React.Component {
             league => league.id === this.props.activeLeagueId,
         );
         if (foundLeague) {
-            let teamsArray = foundLeague.teams.items;
+            let teamsArray;
             if (this.props.isFavoritesShown) {
-                const favoriteTeams = window.localStorage.getItem('favoriteTeams');
-                if (favoriteTeams) {
-                    teamsArray = JSON.parse(favoriteTeams);
-                } else {
-                    teamsArray = [];
-                }
+                teamsArray = this.props.favoriteTeams;
+            } else {
+                teamsArray = foundLeague.teams.items;
             }
             return (
                 <section className='teamsSection'>
@@ -74,6 +71,7 @@ Teams.propTypes = {
     deleteFavoriteTeam: PropTypes.func.isRequired,
     toggleShowingFavorites: PropTypes.func.isRequired,
     isFavoritesShown: PropTypes.bool.isRequired,
+    favoriteTeams: PropTypes.array.isRequired,
 };
 
 export default Teams;

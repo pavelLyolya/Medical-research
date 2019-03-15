@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
     activeLeagueId: state.activeLeagueId,
     leagues: state.leagues,
     isFavoritesShown: state.isFavoritesShown,
+    favoriteTeams: state.favoriteTeams,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -18,8 +19,8 @@ const mapDispatchToProps = dispatch => ({
         dispatch(fetchTeams(id));
     },
     fetchTeams: id => dispatch(fetchTeams(id)),
-    addFavoriteTeam: (teamId, idLeague) => dispatch(addFavoriteTeam(teamId, idLeague)),
-    deleteFavoriteTeam: (teamId, idLeague) => dispatch(deleteFavoriteTeam(teamId, idLeague)),
+    addFavoriteTeam: (team, idLeague) => dispatch(addFavoriteTeam(team, idLeague)),
+    deleteFavoriteTeam: teamId => dispatch(deleteFavoriteTeam(teamId)),
     toggleShowingFavorites: () => dispatch(toggleShowingFavorites()),
 });
 

@@ -11,6 +11,11 @@ export const leagues = {
     DELETE_FAVORITE_TEAM: 'DELETE_FAVORITE_TEAM',
 };
 
+export const favorites = {
+    ADD_FAVORITE_TEAM: 'ADD_FAVORITE_TEAM',
+    DELETE_FAVORITE_TEAM: 'DELETE_FAVORITE_TEAM',
+};
+
 export const activeLeague = {
     CHANGE_ACTIVE_LEAGUE: 'CHANGE_ACTIVE_LEAGUE',
 };
