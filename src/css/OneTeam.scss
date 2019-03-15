@@ -48,7 +48,7 @@ $shadow: 0 2px 3px #616161;
     justify-content: space-between;
 }
 
-.players, .tweets {
+.players, .tweets, .fixtures, .fixtureDetails {
     width: 49%;
 }
 
@@ -92,6 +92,32 @@ $shadow: 0 2px 3px #616161;
         img {
             width: auto;
             height: 100%;
+        }
+    }
+}
+
+.dateChooser {
+    padding: 3% 3%;
+    margin: 10px 0;
+    background-color: $gray-color;
+    box-shadow: $shadow;
+
+    .dateForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+        font-size: 1.7rem;
+
+        .rowChooserForm {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 50%;
+        }
+
+        #start, #end {
+            font-family: $main-font;
         }
     }
 }
@@ -146,6 +172,49 @@ $shadow: 0 2px 3px #616161;
     }
 }
 
+%fixturesItem {
+    box-sizing: border-box;
+    box-shadow: $shadow;
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 2rem;
+
+    .fixturesItemHeader {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 400;
+        font-size: 2.5rem;
+    }
+    .fixturesItemDate {
+        font-weight: 300;
+    }
+    .fixtureStatistics {
+        display: flex;
+        flex-direction: column;
+        font-weight: 300;
+    }
+}
+
+.fixturesItem {
+    @extend %fixturesItem;
+    background-color: $gray-color;
+}
+
+.fixturesItemSelected {
+    @extend %fixturesItem;
+    background-color: $main-color;
+}
+
+.fixtureDetails {
+    
+    .fixturesItem {
+        margin: 0;
+    }
+}
+
+.lastGamesPanel .fixturesItem {
+    margin: 10px 0;
+}
 
 @media (max-width: 1023px) {
     .oneTeamSection .teamsList {
@@ -174,7 +243,7 @@ $shadow: 0 2px 3px #616161;
         flex-direction: column;
         align-items: center;
     }
-    .players, .tweets {
+    .players, .tweets, .fixtures, .fixtureDetails  {
         width: 90%;
     }
     .playerItem .shirtNumber {
@@ -182,5 +251,8 @@ $shadow: 0 2px 3px #616161;
     }
     .leagueSelect, .favoritesButton {
         margin: 2% 3%;
+    }
+    .dateChooser .dateForm .rowChooserForm {
+        width: 70%;
     }
 }
