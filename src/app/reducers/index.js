@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import favoriteTeams from './favoriteTeams';
 import leagues from './leagues';
 import activeLeagueId from './activeLeagueId';
 import activePageName from './activePageName';
+import isFavoritesShown from './isFavoritesShown';
+import favoriteTeams from './favoriteTeams';
 
 export default combineReducers({
-    favoriteTeams,
     activeLeagueId,
     activePageName,
     leagues,
+    isFavoritesShown,
+    favoriteTeams,
 });

@@ -1,56 +1,76 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import TeamsHeader from './TeamsHeader';
 import LeagueSelect from './LeagueSelect';
 import FavoritesButton from './FavoritesButton';
-import { initialState } from '../../reducers/leagues';
 import TeamsList from './TeamsList';
 import '../../../css/Teams.scss';
 
-const teamsArray = [
-    {
-        id: 1,
-        name: 'FC Bayern Munchen',
-        shortName: 'Bayern',
-        imgURL: 'http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg',
-    },
-    {
-        id: 2,
-        name: 'FC Bayern Munchen',
-        shortName: 'Bayern',
-        imgURL: 'https://upload.wikimedia.org/wikipedia/de/4/41/Afc_bournemouth.svg',
-    },
-    {
-        id: 3,
-        name: 'FC Bayern Munchen',
-        shortName: 'Bayern',
-        imgURL: 'http://upload.wikimedia.org/wikipedia/de/c/c9/FC_Southampton.svg',
-    },
-    {
-        id: 4,
-        name: 'FC Bayern Munchen',
-        shortName: 'Bayern',
-        imgURL: 'http://upload.wikimedia.org/wikipedia/de/5/56/Newcastle_United_Logo.svg',
-    },
-];
-
 class Teams extends React.Component {
+    constructor(props) {
+        super(props);
+        this.changeActiveLeague = this.changeActiveLeague.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.fetchTeams(this.props.activeLeagueId);
+    }
+
+    changeActiveLeague(e) {
+        this.props.changeActiveLeague(+e.target.value);
+    }
+
     render() {
+        const foundLeague = this.props.leagues.find(
+            league => league.id === this.props.activeLeagueId,
+        );
+        let teamsArray;
+        if (this.props.isFavoritesShown) {
+            teamsArray = this.props.favoriteTeams;
+        } else if (foundLeague) {
+            teamsArray = foundLeague.teams.items;
+        } else {
+            return null;
+        }
         return (
             <section className='teamsSection'>
-                <TeamsHeader headerName={'Active League Name'} />
+                <TeamsHeader
+                    headerName={foundLeague.name || 'League Name'}
+                    isFavoritesShown={this.props.isFavoritesShown}
+                />
                 <div className='teamsSubheader'>
-                    <LeagueSelect leaguesArray={initialState} />
-                    <FavoritesButton />
+                    <LeagueSelect
+                        activeLeagueId={this.props.activeLeagueId}
+                        leaguesArray={this.props.leagues}
+                        changeActiveLeague={this.changeActiveLeague}
+                        isFavoritesShown={this.props.isFavoritesShown}
+                    />
+                    <FavoritesButton
+                        isFavoritesShown={this.props.isFavoritesShown}
+                        toggleShowingFavorites={this.props.toggleShowingFavorites}
+                    />
                 </div>
-                <TeamsList teamsArray={teamsArray} />
+                <TeamsList
+                    teamsArray={teamsArray}
+                    activeLeagueId={this.props.activeLeagueId}
+                    addFavoriteTeam={this.props.addFavoriteTeam}
+                    deleteFavoriteTeam={this.props.deleteFavoriteTeam}
+                />
             </section>
         );
     }
 }
 
-// Teams.propTypes = {
-//     activeLeagueName: PropTypes.string.isRequired,
-// };
+Teams.propTypes = {
+    activeLeagueId: PropTypes.number.isRequired,
+    leagues: PropTypes.array.isRequired,
+    changeActiveLeague: PropTypes.func.isRequired,
+    fetchTeams: PropTypes.func.isRequired,
+    addFavoriteTeam: PropTypes.func.isRequired,
+    deleteFavoriteTeam: PropTypes.func.isRequired,
+    toggleShowingFavorites: PropTypes.func.isRequired,
+    isFavoritesShown: PropTypes.bool.isRequired,
+    favoriteTeams: PropTypes.array.isRequired,
+};
 
 export default Teams;

@@ -1,29 +1,14 @@
-import { favoriteTeams as favoriteTeamsActionType } from '../actions/actionTypes';
+import { favorites } from '../actions/actionTypes';
+import { getTeamsFromLocalStorage } from '../services/functions';
 
-const initialState = {
-    isFething: false,
-    error: null,
-    items: [],
-};
+const defaultState = getTeamsFromLocalStorage();
 
-const favoriteTeams = (state = initialState, action) => {
+const favoriteTeams = (state = defaultState, action) => {
     switch (action.type) {
-        case favoriteTeamsActionType.FETCHING_FAVORITE_TEAMS:
-            return {
-                ...state,
-                isFething: true,
-            };
-        case favoriteTeamsActionType.FAVORITE_TEAMS_FETCHED:
-            return {
-                ...state,
-                isFething: false,
-                items: state.items.concat(),
-            };
-        case favoriteTeamsActionType.FETCHING_FAVORITE_TEAMS_ERROR:
-            return {
-                ...state,
-                error: 'FETCHING ERROR',
-            };
+        case favorites.ADD_FAVORITE_TEAM:
+            return [...state, action.team];
+        case favorites.DELETE_FAVORITE_TEAM:
+            return state.filter(team => team.teamId !== action.teamId);
         default:
             return state;
     }

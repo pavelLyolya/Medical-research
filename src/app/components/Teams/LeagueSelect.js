@@ -1,11 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const LeagueSelect = ({ leaguesArray }) => (
+const LeagueSelect = ({
+    isFavoritesShown,
+    activeLeagueId,
+    leaguesArray,
+    changeActiveLeague,
+}) => (
     <div className='leagueSelect'>
-        <select className='select' >
+        <select className='select' disabled={isFavoritesShown} value={activeLeagueId} onChange={changeActiveLeague} >
             {leaguesArray.map(league => (
-                <option key={league.id}>
+                <option key={league.id} value={league.id}>
                     {league.name}
                 </option>))}
         </select>
@@ -14,6 +19,9 @@ const LeagueSelect = ({ leaguesArray }) => (
 
 LeagueSelect.propTypes = {
     leaguesArray: PropTypes.array.isRequired,
+    changeActiveLeague: PropTypes.func.isRequired,
+    activeLeagueId: PropTypes.number.isRequired,
+    isFavoritesShown: PropTypes.bool.isRequired,
 };
 
 export default LeagueSelect;
