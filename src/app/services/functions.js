@@ -1,9 +1,14 @@
-export const findObjectOnId = (array, id) => {
-    const foundObject = array.find(league => league.id === id);
-    if (foundObject) {
-        return foundObject;
+export const findTeamInLeagues = (leaguesArray, leagueId, teamId) => {
+    const foundLeague = leaguesArray.find(league => league.id === leagueId);
+    if (foundLeague) {
+        const foundTeam = foundLeague.teams.items.find(
+            team => team.teamId === teamId,
+        );
+        if (foundTeam) {
+            return foundTeam;
+        }
     }
-    throw Error(`Object with id ${id} not found in ${array}!!!`);
+    return null;
 };
 
 export const isFavorite = (teamId) => {

@@ -1,5 +1,5 @@
 import { leagues as leaguesActionType } from '../actions/actionTypes';
-import { findObjectOnId } from '../services/functions';
+import { findTeamInLeagues } from '../services/functions';
 
 export const initialState = [
     {
@@ -77,13 +77,14 @@ export const initialState = [
 const leagues = (state = initialState, action) => {
     let newState = null;
     let foundLeague = null;
+    let foundTeam = null;
     let standings = null;
     let teams = null;
 
     switch (action.type) {
         case leaguesActionType.FETCHING_STANDINGS:
             newState = state.slice();
-            foundLeague = findObjectOnId(newState, action.idLeague);
+            foundLeague = newState.find(league => league.id === action.idLeague);
             if (foundLeague) {
                 foundLeague.standings.isFething = true;
                 return newState;
@@ -91,13 +92,17 @@ const leagues = (state = initialState, action) => {
             return state;
         case leaguesActionType.STANDINGS_FETCHED:
             newState = state.slice();
-            ({ standings } = findObjectOnId(newState, action.idLeague));
-            standings.isFething = false;
-            standings.items = action.data;
-            return newState;
+            foundLeague = newState.find(league => league.id === action.idLeague);
+            if (foundLeague) {
+                ({ standings } = foundLeague);
+                standings.isFething = false;
+                standings.items = action.data;
+                return newState;
+            }
+            return state;
         case leaguesActionType.FETCHING_TEAMS:
             newState = state.slice();
-            foundLeague = findObjectOnId(newState, action.idLeague);
+            foundLeague = newState.find(league => league.id === action.idLeague);
             if (foundLeague) {
                 foundLeague.standings.isFething = true;
                 return newState;
@@ -105,36 +110,28 @@ const leagues = (state = initialState, action) => {
             return state;
         case leaguesActionType.TEAMS_FETCHED:
             newState = state.slice();
-            ({ teams } = findObjectOnId(newState, action.idLeague));
-            teams.isFething = false;
-            teams.items = action.data;
-            return newState;
+            foundLeague = newState.find(league => league.id === action.idLeague);
+            if (foundLeague) {
+                ({ teams } = foundLeague);
+                teams.isFething = false;
+                teams.items = action.data;
+                return newState;
+            }
+            return state;
         case leaguesActionType.ADD_FAVORITE_TEAM:
             newState = state.slice();
-            foundLeague = findObjectOnId(newState, action.idLeague);
-            if (foundLeague) {
-                const foundTeam = foundLeague.teams.items.find(
-                    team => team.teamId === action.teamId,
-                );
-                if (foundTeam) {
-                    foundTeam.isFavorite = true;
-                    return newState;
-                }
-                return state;
+            foundTeam = findTeamInLeagues(newState, action.idLeague, action.teamId);
+            if (foundTeam) {
+                foundTeam.isFavorite = true;
+                return newState;
             }
             return state;
         case leaguesActionType.DELETE_FAVORITE_TEAM:
             newState = state.slice();
-            foundLeague = findObjectOnId(newState, action.idLeague);
-            if (foundLeague) {
-                const foundTeam = foundLeague.teams.items.find(
-                    team => team.teamId === action.teamId,
-                );
-                if (foundTeam) {
-                    foundTeam.isFavorite = false;
-                    return newState;
-                }
-                return state;
+            foundTeam = findTeamInLeagues(newState, action.idLeague, action.teamId);
+            if (foundTeam) {
+                foundTeam.isFavorite = false;
+                return newState;
             }
             return state;
         default:
