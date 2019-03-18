@@ -104,7 +104,7 @@ const leagues = (state = initialState, action) => {
             newState = state.slice();
             foundLeague = newState.find(league => league.id === action.idLeague);
             if (foundLeague) {
-                foundLeague.standings.isFething = true;
+                foundLeague.teams.isFething = true;
                 return newState;
             }
             return state;
