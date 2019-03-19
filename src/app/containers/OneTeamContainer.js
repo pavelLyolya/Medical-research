@@ -5,7 +5,9 @@ import togglePlayersFixtures from '../actions/togglePlayersFixtures';
 import OneTeam from '../components/OneTeam/OneTeam';
 
 const mapStateToProps = state => ({
+    activeLeagueId: state.activeLeagueId,
     isPlayersActive: state.isPlayersActive,
+    favoriteTeams: state.favoriteTeams,
 });
 
 const mapDispatchToProps = dispatch => ({

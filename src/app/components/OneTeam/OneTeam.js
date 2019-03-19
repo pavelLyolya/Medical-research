@@ -6,10 +6,11 @@ import Tweets from './Tweets';
 import Fixtures from './Fixtures/Fixtures';
 import FixtureDetails from './Fixtures/FixtureDetails';
 import OneTeamControlls from './OneTeamControlls';
+import { isFavorite } from '../../services/functions';
 import '../../../css/OneTeam.scss';
 
 const team = {
-    id: 1,
+    teamId: 57,
     name: 'FC Bayern Munchen',
     shortName: 'Bayern',
     imgURL: 'http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg',
@@ -39,8 +40,8 @@ class OneTeam extends React.Component {
                 <header className='oneTeamHeader'>
                     <TeamItem
                         team={team}
-                        isFavorite={team.isFavorite}
-                        activeLeagueId={2021}
+                        isFavorite={isFavorite(this.props.favoriteTeams, team.teamId)}
+                        activeLeagueId={this.props.activeLeagueId}
                         addFavoriteTeam={this.props.addFavoriteTeam}
                         deleteFavoriteTeam={this.props.deleteFavoriteTeam}
                     />
@@ -59,6 +60,8 @@ class OneTeam extends React.Component {
 
 OneTeam.propTypes = {
     isPlayersActive: PropTypes.bool.isRequired,
+    favoriteTeams: PropTypes.array.isRequired,
+    activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,

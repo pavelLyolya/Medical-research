@@ -13,9 +13,7 @@ export const findTeamInLeagues = (leaguesArray, leagueId, teamId) => {
     return null;
 };
 
-export const isFavorite = (teamId) => {
-    let favoriteTeams = window.localStorage.getItem(FAVORITE_TEAMS_KEY);
-    favoriteTeams = JSON.parse(favoriteTeams);
+export const isFavorite = (favoriteTeams, teamId) => {
     if (favoriteTeams) {
         return favoriteTeams.some(item => teamId === item.teamId);
     }

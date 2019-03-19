@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { isFavorite } from '../../services/functions';
 
 export class TeamItem extends React.PureComponent {
     constructor(props) {
@@ -26,7 +27,7 @@ export class TeamItem extends React.PureComponent {
                     <Link to={`/teams/${this.props.team.teamId}`} className='teamName'>{this.props.team.name}</Link>
                     <span className='teamShortName'>short name: {this.props.team.shortName}</span>
                     <button className='addToFavorite' onClick={this.toggleFavorite}>
-                        {this.props.team.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+                        {this.props.isFavorite ? 'Remove from favorites' : 'Add to favorites'}
                     </button>
                 </div>
             </div>
@@ -47,12 +48,13 @@ const TeamsList = ({
     activeLeagueId,
     addFavoriteTeam,
     deleteFavoriteTeam,
+    favoriteTeams,
 }) => teamsArray && (
     <section className='teamsList'>
         {teamsArray.map(item => <TeamItem
             key={item.teamId}
             team={item}
-            isFavorite={item.isFavorite}
+            isFavorite={isFavorite(favoriteTeams, item.teamId)}
             activeLeagueId={activeLeagueId}
             addFavoriteTeam={addFavoriteTeam}
             deleteFavoriteTeam={deleteFavoriteTeam}
@@ -64,6 +66,7 @@ TeamsList.propTypes = {
     activeLeagueId: PropTypes.number.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
+    favoriteTeams: PropTypes.array.isRequired,
     teamsArray: PropTypes.array,
 };
 

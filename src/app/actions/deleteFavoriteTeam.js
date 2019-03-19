@@ -1,10 +1,10 @@
-import { leagues } from './actionTypes';
+import { favorites } from './actionTypes';
 import { deleteTeamFromLocalStorage } from '../services/functions';
 
 const deleteFavoriteTeam = (teamId) => {
     const deletingLeagueIndex = deleteTeamFromLocalStorage(teamId);
     return {
-        type: leagues.DELETE_FAVORITE_TEAM,
+        type: favorites.DELETE_FAVORITE_TEAM,
         teamId,
         idLeague: deletingLeagueIndex,
     };

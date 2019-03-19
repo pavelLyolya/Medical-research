@@ -1,5 +1,4 @@
 import { leagues as leaguesActionType } from '../actions/actionTypes';
-import { findTeamInLeagues } from '../services/functions';
 
 export const initialState = [
     {
@@ -77,7 +76,6 @@ export const initialState = [
 const leagues = (state = initialState, action) => {
     let newState = null;
     let foundLeague = null;
-    let foundTeam = null;
     let standings = null;
     let teams = null;
 
@@ -115,22 +113,6 @@ const leagues = (state = initialState, action) => {
                 ({ teams } = foundLeague);
                 teams.isFething = false;
                 teams.items = action.data;
-                return newState;
-            }
-            return state;
-        case leaguesActionType.ADD_FAVORITE_TEAM:
-            newState = state.slice();
-            foundTeam = findTeamInLeagues(newState, action.idLeague, action.teamId);
-            if (foundTeam) {
-                foundTeam.isFavorite = true;
-                return newState;
-            }
-            return state;
-        case leaguesActionType.DELETE_FAVORITE_TEAM:
-            newState = state.slice();
-            foundTeam = findTeamInLeagues(newState, action.idLeague, action.teamId);
-            if (foundTeam) {
-                foundTeam.isFavorite = false;
                 return newState;
             }
             return state;
