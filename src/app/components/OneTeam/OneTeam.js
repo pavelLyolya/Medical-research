@@ -1,6 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
-import TeamsList from '../Teams/TeamsList';
+import PropTypes from 'prop-types';
+import { TeamItem } from '../Teams/TeamsList';
 import Players from './Players';
 import Tweets from './Tweets';
 import Fixtures from './Fixtures/Fixtures';
@@ -8,19 +8,18 @@ import FixtureDetails from './Fixtures/FixtureDetails';
 import OneTeamControlls from './OneTeamControlls';
 import '../../../css/OneTeam.scss';
 
-const team = [{
+const team = {
     id: 1,
     name: 'FC Bayern Munchen',
     shortName: 'Bayern',
     imgURL: 'http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg',
-}];
-
-const isPlayersActive = false;
+    isFavorite: false,
+};
 
 class OneTeam extends React.Component {
     render() {
         let oneTeamContent;
-        if (isPlayersActive) {
+        if (this.props.isPlayersActive) {
             oneTeamContent = (
                 <React.Fragment>
                     <Players />
@@ -38,8 +37,17 @@ class OneTeam extends React.Component {
         return (
             <section className='oneTeamSection'>
                 <header className='oneTeamHeader'>
-                    <TeamsList teamsArray={team} />
-                    <OneTeamControlls />
+                    <TeamItem
+                        team={team}
+                        isFavorite={team.isFavorite}
+                        activeLeagueId={2021}
+                        addFavoriteTeam={this.props.addFavoriteTeam}
+                        deleteFavoriteTeam={this.props.deleteFavoriteTeam}
+                    />
+                    <OneTeamControlls
+                        isPlayersActive={this.props.isPlayersActive}
+                        togglePlayersFixtures={this.props.togglePlayersFixtures}
+                    />
                 </header>
                 <section className='oneTeamContent'>
                     {oneTeamContent}
@@ -49,8 +57,11 @@ class OneTeam extends React.Component {
     }
 }
 
-// Teams.propTypes = {
-//     activeLeagueName: PropTypes.string.isRequired,
-// };
+OneTeam.propTypes = {
+    isPlayersActive: PropTypes.bool.isRequired,
+    togglePlayersFixtures: PropTypes.func.isRequired,
+    addFavoriteTeam: PropTypes.func.isRequired,
+    deleteFavoriteTeam: PropTypes.func.isRequired,
+};
 
 export default OneTeam;

@@ -25,3 +25,5 @@ export const activePage = {
 };
 
 export const TOGGLE_SHOWING_FAVORITES = 'TOGGLE_SHOWING_FAVORITES';
+
+export const TOGGLE_PLAYERS_FIXTURES = 'TOGGLE_PLAYERS_FIXTURES';

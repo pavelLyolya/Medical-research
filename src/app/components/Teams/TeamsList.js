@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-class TeamItem extends React.PureComponent {
+export class TeamItem extends React.PureComponent {
     constructor(props) {
         super(props);
         this.toggleFavorite = this.toggleFavorite.bind(this);

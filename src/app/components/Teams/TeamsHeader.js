@@ -9,7 +9,7 @@ const TeamsHeader = ({ isFavoritesShown, headerName }) => (
 
 TeamsHeader.propTypes = {
     headerName: PropTypes.string.isRequired,
-    isFavoritesShown: PropTypes.bool.isRequired,
+    isFavoritesShown: PropTypes.bool,
 };
 
 export default TeamsHeader;

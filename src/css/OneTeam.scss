@@ -22,7 +22,7 @@ $shadow: 0 2px 3px #616161;
     width: 49%;
     margin: 10px 0;
 
-    .teamControll {
+    %teamControll {
         width: 40%;
         height: 4vh;
         border: none;
@@ -35,11 +35,21 @@ $shadow: 0 2px 3px #616161;
         }
         &:focus {
             outline: none;
-            background-color: $main-color;
+        }
+        &:disabled {
+            color: #fff;
         }
         &:hover {
             cursor: pointer;
         }
+    }
+
+    .teamControll{
+        @extend %teamControll;
+    }
+    .teamControllActive{
+        @extend %teamControll;
+        background-color: $main-color;
     }
 }
 

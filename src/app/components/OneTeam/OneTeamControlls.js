@@ -1,19 +1,24 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-class OneTeamControlls extends React.Component {
-    render() {
-        return (
-            <div className='oneTeamControlls'>
-                <button className='teamControll'>players</button>
-                <button className='teamControll'>fixtures</button>
-            </div>
-        );
-    }
-}
+const OneTeamControlls = ({ isPlayersActive, togglePlayersFixtures }) => (
+    <div className='oneTeamControlls'>
+        <button
+            className={isPlayersActive ? 'teamControllActive' : 'teamControll'}
+            disabled={isPlayersActive}
+            onClick={togglePlayersFixtures}
+        >players</button>
+        <button
+            className={isPlayersActive ? 'teamControll' : 'teamControllActive'}
+            disabled={!isPlayersActive}
+            onClick={togglePlayersFixtures}
+        >fixtures</button>
+    </div>
+);
 
-// OneTeamControlls.propTypes = {
-//     activeLeagueName: PropTypes.string.isRequired,
-// };
+OneTeamControlls.propTypes = {
+    isPlayersActive: PropTypes.bool.isRequired,
+    togglePlayersFixtures: PropTypes.func.isRequired,
+};
 
 export default OneTeamControlls;

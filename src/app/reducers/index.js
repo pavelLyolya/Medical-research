@@ -4,6 +4,7 @@ import activeLeagueId from './activeLeagueId';
 import activePageName from './activePageName';
 import isFavoritesShown from './isFavoritesShown';
 import favoriteTeams from './favoriteTeams';
+import isPlayersActive from './isPlayersActive';
 
 export default combineReducers({
     activeLeagueId,
@@ -11,4 +12,5 @@ export default combineReducers({
     leagues,
     isFavoritesShown,
     favoriteTeams,
+    isPlayersActive,
 });
