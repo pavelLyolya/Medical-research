@@ -9,21 +9,26 @@ import OneTeamControlls from './OneTeamControlls';
 import { isFavorite } from '../../services/functions';
 import '../../../css/OneTeam.scss';
 
-const team = {
-    teamId: 57,
-    name: 'FC Bayern Munchen',
-    shortName: 'Bayern',
-    imgURL: 'http://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg',
-    isFavorite: false,
-};
-
 class OneTeam extends React.Component {
+    componentDidMount() {
+        // eslint-disable-next-line react/prop-types
+        this.props.fetchOneTeam(this.props.match.params.id);
+    }
+
+    componentWillUnmount() {
+        this.props.deleteCurrentTeam();
+    }
+
     render() {
+        const team = this.props.currentTeam;
+        if (!team) {
+            return null;
+        }
         let oneTeamContent;
         if (this.props.isPlayersActive) {
             oneTeamContent = (
                 <React.Fragment>
-                    <Players />
+                    <Players players={team.squad} />
                     <Tweets />
                 </React.Fragment>
             );
@@ -59,12 +64,16 @@ class OneTeam extends React.Component {
 }
 
 OneTeam.propTypes = {
+    currentTeam: PropTypes.object,
     isPlayersActive: PropTypes.bool.isRequired,
     favoriteTeams: PropTypes.array.isRequired,
     activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
+    deleteCurrentTeam: PropTypes.func.isRequired,
+    addCurrentTeam: PropTypes.func.isRequired,
+    fetchOneTeam: PropTypes.func.isRequired,
 };
 
 export default OneTeam;

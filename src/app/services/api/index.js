@@ -18,3 +18,8 @@ export const getAllTeams = async (idLeague) => {
     const teams = await getData(`${URLS.competitions}/${idLeague}/${URLS.teams}`);
     return teams;
 };
+
+export const getOneTeam = async (id) => {
+    const team = await getData(`${URLS.teams}/${id}`);
+    return team;
+};
