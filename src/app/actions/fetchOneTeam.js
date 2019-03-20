@@ -27,6 +27,7 @@ const fetchOneTeam = id => async (dispatch) => {
             }
             return team1.shirtNumber - team2.shirtNumber;
         }),
+        fixtures: data.fixtures,
     };
     dispatch(oneTeamFetched(team));
 };

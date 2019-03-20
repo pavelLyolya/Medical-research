@@ -28,7 +28,9 @@ export const FixturesItem = ({
     <div className='fixturesItem'>
         <header className='fixturesItemHeader'>
             <h3>{homeTeam} - {awayTeam}</h3>
-            {score && <span>{score.homeTeam} - {score.awayTeam}</span>}
+            {score && score.homeTeam !== null && <span>
+                {score.homeTeam} - {score.awayTeam}
+            </span>}
         </header>
         <p className='fixturesItemDate'>Date: {new Date(utcDate).toDateString()}</p>
         {statistics && <React.Fragment>
@@ -58,9 +60,9 @@ const FixturesList = ({ fixtures }) => (
             {fixtures.map(item => (
                 <FixturesItem
                     key={item.id}
-                    homeTeam={item.homeTeam}
-                    awayTeam={item.awayTeam}
-                    score={item.score}
+                    homeTeam={item.homeTeam.name}
+                    awayTeam={item.awayTeam.name}
+                    score={item.score.fullTime}
                     utcDate={item.utcDate}
                 />
             ))}

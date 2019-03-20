@@ -35,7 +35,7 @@ class OneTeam extends React.Component {
         } else {
             oneTeamContent = (
                 <React.Fragment>
-                    <Fixtures />
+                    <Fixtures fixtures={team.fixtures} />
                     <FixtureDetails />
                 </React.Fragment>
             );
