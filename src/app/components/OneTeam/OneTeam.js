@@ -21,6 +21,7 @@ class OneTeam extends React.Component {
 
     render() {
         const team = this.props.currentTeam;
+        const { entities } = this.props;
         if (!team) {
             return null;
         }
@@ -28,14 +29,14 @@ class OneTeam extends React.Component {
         if (this.props.isPlayersActive) {
             oneTeamContent = (
                 <React.Fragment>
-                    <Players players={team.squad} />
+                    <Players players={entities} />
                     <Tweets />
                 </React.Fragment>
             );
         } else {
             oneTeamContent = (
                 <React.Fragment>
-                    <Fixtures fixtures={team.fixtures} />
+                    <Fixtures fixtures={entities} />
                     <FixtureDetails />
                 </React.Fragment>
             );
@@ -65,6 +66,7 @@ class OneTeam extends React.Component {
 
 OneTeam.propTypes = {
     currentTeam: PropTypes.object,
+    entities: PropTypes.array,
     isPlayersActive: PropTypes.bool.isRequired,
     favoriteTeams: PropTypes.array.isRequired,
     activeLeagueId: PropTypes.number.isRequired,

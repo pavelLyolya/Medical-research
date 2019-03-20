@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Pagination from '../Pagination';
+import Pagination from '../../../containers/PaginationContainer';
 import DateChooser from './DateChooser';
 
 const FixtureStatistics = ({

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TeamsHeader from '../../Teams/TeamsHeader';
 import FixturesList from './FixturesList';
 
-const Fixtures = ({ fixtures }) => (
+const Fixtures = ({ fixtures }) => fixtures && (
     <div className='fixtures'>
         <TeamsHeader headerName='Fixtures' />
         <FixturesList fixtures={fixtures} />

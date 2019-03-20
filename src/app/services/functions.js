@@ -59,3 +59,10 @@ export const deleteTeamFromLocalStorage = (teamId) => {
     window.localStorage.setItem(FAVORITE_TEAMS_KEY, JSON.stringify(favoriteTeams));
     return deletingLeagueIndex;
 };
+
+export const paginate = (array, countPerPage, pageNumber) => {
+    const pageNum = pageNumber - 1;
+    return array.slice(pageNum * countPerPage, (pageNum + 1) * countPerPage);
+};
+
+export const countPagesNumber = (array, countPerPage) => Math.ceil(array.length / countPerPage);

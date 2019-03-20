@@ -1,27 +1,118 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Pagination extends React.Component {
+    constructor(props) {
+        super(props);
+        this.changeCountPerPage = this.changeCountPerPage.bind(this);
+        this.goToFirst = this.goToFirst.bind(this);
+        this.goToPrev = this.goToPrev.bind(this);
+        this.goToNext = this.goToNext.bind(this);
+        this.goToLast = this.goToLast.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.setPagesNumber(this.props.mainArray, this.props.itemsPerPage);
+        this.props.setPaginated(
+            this.props.mainArray, this.props.itemsPerPage, this.props.currentPage,
+        );
+    }
+
+    componentWillUnmount() {
+        this.props.clearPagination();
+    }
+
+    changeCountPerPage(e) {
+        this.props.changeCountPerPage(+e.target.value);
+        this.props.setPagesNumber(this.props.mainArray, +e.target.value);
+        this.props.setPaginated(this.props.mainArray, +e.target.value, 1);
+    }
+
+    goToFirst() {
+        this.props.goToFirst();
+        this.props.setPaginated(
+            this.props.mainArray, this.props.itemsPerPage, 1,
+        );
+    }
+
+    goToPrev() {
+        if (this.props.currentPage > 1) {
+            this.props.goToPrev();
+            this.props.setPaginated(
+                this.props.mainArray, this.props.itemsPerPage, this.props.currentPage - 1,
+            );
+        }
+    }
+
+    goToNext() {
+        if (this.props.currentPage < this.props.pagesNumber) {
+            this.props.goToNext();
+            this.props.setPaginated(
+                this.props.mainArray, this.props.itemsPerPage, this.props.currentPage + 1,
+            );
+        }
+    }
+
+    goToLast() {
+        this.props.goToLast();
+        this.props.setPaginated(
+            this.props.mainArray, this.props.itemsPerPage, this.props.pagesNumber,
+        );
+    }
+
     render() {
         return (
             <div className='pagination'>
-                <select defaultValue='5' className='chooseCount'>
+                <select
+                    defaultValue='5'
+                    onChange={this.changeCountPerPage}
+                    className='chooseCount'
+                >
                     <option value='5'>5</option>
                     <option value='10'>10</option>
                     <option value='15'>15</option>
                 </select>
-                <span className='firstPage'>first</span>
-                <span className='prevPage'>prev</span>
-                <span className='pageNumber'>1/6</span>
-                <span className='nextPage'>next</span>
-                <span className='lastPage'>last</span>
+                <span
+                    onClick={this.goToFirst}
+                    className='firstPage'
+                >first</span>
+                <span
+                    onClick={this.goToPrev}
+                    className='prevPage'
+                >prev</span>
+                <span className='pageNumber'>
+                    {this.props.currentPage}
+                    /
+                    {this.props.pagesNumber}
+                </span>
+                <span
+                    onClick={this.goToNext}
+                    className='nextPage'
+                >next</span>
+                <span
+                    onClick={this.goToLast}
+                    className='lastPage'
+                >last</span>
             </div>
         );
     }
 }
 
-// Pagination.propTypes = {
-//     activeLeagueName: PropTypes.string.isRequired,
-// };
+Pagination.propTypes = {
+    currentPage: PropTypes.number.isRequired,
+    pagesNumber: PropTypes.number,
+    itemsPerPage: PropTypes.number.isRequired,
+    isPlayersActive: PropTypes.bool,
+    mainArray: PropTypes.array,
+    entities: PropTypes.array,
+    goToNext: PropTypes.func.isRequired,
+    goToPrev: PropTypes.func.isRequired,
+    goToLast: PropTypes.func.isRequired,
+    goToFirst: PropTypes.func.isRequired,
+    changeCountPerPage: PropTypes.func.isRequired,
+    setPagesNumber: PropTypes.func.isRequired,
+    setPaginated: PropTypes.func.isRequired,
+    clearPagination: PropTypes.func.isRequired,
+};
 
 export default Pagination;

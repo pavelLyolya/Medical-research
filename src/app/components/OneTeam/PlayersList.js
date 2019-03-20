@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Pagination from './Pagination';
+import Pagination from '../../containers/PaginationContainer';
 
 const PlayerItem = ({
     name, position, dateOfBirth, shirtNumber,
@@ -25,7 +25,7 @@ PlayerItem.propTypes = {
     shirtNumber: PropTypes.number,
 };
 
-const PlayersList = ({ players }) => (
+const PlayersList = ({ players }) => players && (
     <React.Fragment>
         <Pagination />
         <section className='playersList'>
