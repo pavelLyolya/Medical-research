@@ -10,6 +10,11 @@ import { isFavorite } from '../../services/functions';
 import '../../../css/OneTeam.scss';
 
 class OneTeam extends React.Component {
+    constructor(props) {
+        super(props);
+        this.togglePlayersFixtures = this.togglePlayersFixtures.bind(this);
+    }
+
     componentDidMount() {
         // eslint-disable-next-line react/prop-types
         this.props.fetchOneTeam(this.props.match.params.id);
@@ -17,6 +22,11 @@ class OneTeam extends React.Component {
 
     componentWillUnmount() {
         this.props.deleteCurrentTeam();
+    }
+
+    togglePlayersFixtures() {
+        this.props.clearPagination();
+        this.props.togglePlayersFixtures();
     }
 
     render() {
@@ -53,7 +63,7 @@ class OneTeam extends React.Component {
                     />
                     <OneTeamControlls
                         isPlayersActive={this.props.isPlayersActive}
-                        togglePlayersFixtures={this.props.togglePlayersFixtures}
+                        togglePlayersFixtures={this.togglePlayersFixtures}
                     />
                 </header>
                 <section className='oneTeamContent'>
@@ -71,6 +81,7 @@ OneTeam.propTypes = {
     favoriteTeams: PropTypes.array.isRequired,
     activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
+    clearPagination: PropTypes.func.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
     deleteCurrentTeam: PropTypes.func.isRequired,

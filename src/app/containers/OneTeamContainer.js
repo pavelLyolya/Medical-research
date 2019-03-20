@@ -5,6 +5,7 @@ import { addCurrentTeam, deleteCurrentTeam } from '../actions/currentTeam';
 import fetchOneTeam from '../actions/fetchOneTeam';
 import togglePlayersFixtures from '../actions/togglePlayersFixtures';
 import OneTeam from '../components/OneTeam/OneTeam';
+import { clearPagination } from '../actions/pagination';
 
 const mapStateToProps = state => ({
     activeLeagueId: state.activeLeagueId,
@@ -21,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
     deleteFavoriteTeam: teamId => dispatch(deleteFavoriteTeam(teamId)),
     addCurrentTeam: team => dispatch(addCurrentTeam(team)),
     deleteCurrentTeam: () => dispatch(deleteCurrentTeam()),
+    clearPagination: () => dispatch(clearPagination()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(OneTeam);

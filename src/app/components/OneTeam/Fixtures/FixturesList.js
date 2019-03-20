@@ -52,7 +52,7 @@ FixturesItem.propTypes = {
     statistics: PropTypes.object,
 };
 
-const FixturesList = ({ fixtures }) => (
+const FixturesList = ({ fixtures }) => fixtures && (
     <React.Fragment>
         <DateChooser />
         <Pagination />
