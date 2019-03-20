@@ -5,9 +5,11 @@ const fetchingOneTeam = () => ({
     type: current.FETCHING_ONE_TEAM,
 });
 
-const oneTeamFetched = team => ({
+const oneTeamFetched = (team, squad, fixtures) => ({
     type: current.ONE_TEAM_FETCHED,
     team,
+    squad,
+    fixtures,
 });
 
 const fetchOneTeam = id => async (dispatch) => {
@@ -18,18 +20,18 @@ const fetchOneTeam = id => async (dispatch) => {
         name: data.name,
         shortName: data.shortName,
         imgURL: data.crestUrl,
-        squad: data.squad.sort((team1, team2) => {
-            if (!team1.shirtNumber) {
-                return 1;
-            }
-            if (!team2.shirtNumber) {
-                return -1;
-            }
-            return team1.shirtNumber - team2.shirtNumber;
-        }),
-        fixtures: data.fixtures,
     };
-    dispatch(oneTeamFetched(team));
+    const squad = data.squad.sort((team1, team2) => {
+        if (!team1.shirtNumber) {
+            return 1;
+        }
+        if (!team2.shirtNumber) {
+            return -1;
+        }
+        return team1.shirtNumber - team2.shirtNumber;
+    });
+    const { fixtures } = data;
+    dispatch(oneTeamFetched(team, squad, fixtures));
 };
 
 export default fetchOneTeam;

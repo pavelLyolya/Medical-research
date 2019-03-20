@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
     activeLeagueId: state.activeLeagueId,
     isPlayersActive: state.isPlayersActive,
     favoriteTeams: state.favoriteTeams,
-    currentTeam: state.currentTeam.team,
+    currentTeam: state.currentTeam,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -4,6 +4,8 @@ const defaultState = {
     isFetching: false,
     error: null,
     team: null,
+    squad: null,
+    fixtures: null,
 };
 
 const favoriteTeams = (state = defaultState, action) => {
@@ -18,6 +20,8 @@ const favoriteTeams = (state = defaultState, action) => {
                 ...state,
                 isFetching: false,
                 team: action.team,
+                squad: action.squad,
+                fixtures: action.fixtures,
             };
         case current.DELETE_CURRENT_TEAM:
             return defaultState;
