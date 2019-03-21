@@ -64,7 +64,7 @@ $shadow: 0 2px 3px #616161;
 
 .playerItem {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     min-height: 12vh;
     box-sizing: border-box;
@@ -194,6 +194,11 @@ $shadow: 0 2px 3px #616161;
         justify-content: space-between;
         font-weight: 400;
         font-size: 2.5rem;
+
+        span {
+            min-width: 10%;
+            text-align: center;
+        }
     }
     .fixturesItemDate {
         font-weight: 300;

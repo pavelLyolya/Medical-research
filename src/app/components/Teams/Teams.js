@@ -52,6 +52,7 @@ class Teams extends React.Component {
                 </div>
                 <TeamsList
                     teamsArray={teamsArray}
+                    favoriteTeams={this.props.favoriteTeams}
                     activeLeagueId={this.props.activeLeagueId}
                     addFavoriteTeam={this.props.addFavoriteTeam}
                     deleteFavoriteTeam={this.props.deleteFavoriteTeam}
