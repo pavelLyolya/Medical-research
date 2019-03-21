@@ -1,20 +1,20 @@
 import { current } from './actionTypes';
-import { getOneTeam } from '../services/api';
+import { getTeam } from '../services/api';
 
-const fetchingOneTeam = () => ({
+const fetchingTeam = () => ({
     type: current.FETCHING_ONE_TEAM,
 });
 
-const oneTeamFetched = (team, squad, fixtures) => ({
+const TeamFetched = (team, squad, fixtures) => ({
     type: current.ONE_TEAM_FETCHED,
     team,
     squad,
     fixtures,
 });
 
-const fetchOneTeam = id => async (dispatch) => {
-    dispatch(fetchingOneTeam());
-    const data = await getOneTeam(id);
+const fetchTeam = id => async (dispatch) => {
+    dispatch(fetchingTeam());
+    const data = await getTeam(id);
     const team = {
         teamId: data.id,
         name: data.name,
@@ -31,7 +31,7 @@ const fetchOneTeam = id => async (dispatch) => {
         return team1.shirtNumber - team2.shirtNumber;
     });
     const { fixtures } = data;
-    dispatch(oneTeamFetched(team, squad, fixtures));
+    dispatch(TeamFetched(team, squad, fixtures));
 };
 
-export default fetchOneTeam;
+export default fetchTeam;

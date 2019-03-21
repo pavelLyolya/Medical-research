@@ -5,11 +5,11 @@ import Players from './Players';
 import Tweets from './Tweets';
 import Fixtures from './Fixtures/Fixtures';
 import FixtureDetails from './Fixtures/FixtureDetails';
-import OneTeamControlls from './OneTeamControlls';
+import TeamControlls from './TeamControlls';
 import { isFavorite } from '../../services/functions';
-import '../../../css/OneTeam.scss';
+import '../../../css/Team.scss';
 
-class OneTeam extends React.Component {
+class Team extends React.Component {
     constructor(props) {
         super(props);
         this.togglePlayersFixtures = this.togglePlayersFixtures.bind(this);
@@ -17,7 +17,7 @@ class OneTeam extends React.Component {
 
     componentDidMount() {
         // eslint-disable-next-line react/prop-types
-        this.props.fetchOneTeam(this.props.match.params.id);
+        this.props.fetchTeam(this.props.match.params.id);
     }
 
     componentWillUnmount() {
@@ -35,16 +35,16 @@ class OneTeam extends React.Component {
         if (!team) {
             return null;
         }
-        let oneTeamContent;
+        let TeamContent;
         if (this.props.isPlayersActive) {
-            oneTeamContent = (
+            TeamContent = (
                 <React.Fragment>
                     <Players players={entities} />
                     <Tweets />
                 </React.Fragment>
             );
         } else {
-            oneTeamContent = (
+            TeamContent = (
                 <React.Fragment>
                     <Fixtures fixtures={entities} />
                     <FixtureDetails />
@@ -52,8 +52,8 @@ class OneTeam extends React.Component {
             );
         }
         return (
-            <section className='oneTeamSection'>
-                <header className='oneTeamHeader'>
+            <section className='TeamSection'>
+                <header className='TeamHeader'>
                     <TeamItem
                         team={team}
                         isFavorite={isFavorite(this.props.favoriteTeams, team.teamId)}
@@ -61,20 +61,20 @@ class OneTeam extends React.Component {
                         addFavoriteTeam={this.props.addFavoriteTeam}
                         deleteFavoriteTeam={this.props.deleteFavoriteTeam}
                     />
-                    <OneTeamControlls
+                    <TeamControlls
                         isPlayersActive={this.props.isPlayersActive}
                         togglePlayersFixtures={this.togglePlayersFixtures}
                     />
                 </header>
-                <section className='oneTeamContent'>
-                    {oneTeamContent}
+                <section className='TeamContent'>
+                    {TeamContent}
                 </section>
             </section>
         );
     }
 }
 
-OneTeam.propTypes = {
+Team.propTypes = {
     currentTeam: PropTypes.object,
     entities: PropTypes.array,
     isPlayersActive: PropTypes.bool.isRequired,
@@ -86,7 +86,7 @@ OneTeam.propTypes = {
     deleteFavoriteTeam: PropTypes.func.isRequired,
     deleteCurrentTeam: PropTypes.func.isRequired,
     addCurrentTeam: PropTypes.func.isRequired,
-    fetchOneTeam: PropTypes.func.isRequired,
+    fetchTeam: PropTypes.func.isRequired,
 };
 
-export default OneTeam;
+export default Team;

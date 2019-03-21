@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Pagination from '../components/OneTeam/Pagination';
+import Pagination from '../components/Team/Pagination';
 import * as pagination from '../actions/pagination';
 
 const mapStateToProps = state => ({

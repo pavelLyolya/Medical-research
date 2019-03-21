@@ -19,7 +19,7 @@ export const getAllTeams = async (idLeague) => {
     return teams;
 };
 
-export const getOneTeam = async (id) => {
+export const getTeam = async (id) => {
     const team = await getData(`${URLS.teams}/${id}`);
     const matches = await getData(`${URLS.teams}/${id}${URLS.matches}`);
     team.fixtures = matches.matches;

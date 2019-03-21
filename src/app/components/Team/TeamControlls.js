@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OneTeamControlls = ({ isPlayersActive, togglePlayersFixtures }) => (
-    <div className='oneTeamControlls'>
+const TeamControlls = ({ isPlayersActive, togglePlayersFixtures }) => (
+    <div className='TeamControlls'>
         <button
             className={isPlayersActive ? 'teamControllActive' : 'teamControll'}
             disabled={isPlayersActive}
@@ -16,9 +16,9 @@ const OneTeamControlls = ({ isPlayersActive, togglePlayersFixtures }) => (
     </div>
 );
 
-OneTeamControlls.propTypes = {
+TeamControlls.propTypes = {
     isPlayersActive: PropTypes.bool.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
 };
 
-export default OneTeamControlls;
+export default TeamControlls;

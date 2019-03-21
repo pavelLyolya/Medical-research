@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import addFavoriteTeam from '../actions/addFavoriteTeam';
 import deleteFavoriteTeam from '../actions/deleteFavoriteTeam';
 import { addCurrentTeam, deleteCurrentTeam } from '../actions/currentTeam';
-import fetchOneTeam from '../actions/fetchOneTeam';
+import fetchTeam from '../actions/fetchTeam';
 import togglePlayersFixtures from '../actions/togglePlayersFixtures';
-import OneTeam from '../components/OneTeam/OneTeam';
+import Team from '../components/Team/Team';
 import { clearPagination } from '../actions/pagination';
 
 const mapStateToProps = state => ({
@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchOneTeam: id => dispatch(fetchOneTeam(id)),
+    fetchTeam: id => dispatch(fetchTeam(id)),
     togglePlayersFixtures: () => dispatch(togglePlayersFixtures()),
     addFavoriteTeam: (team, idLeague) => dispatch(addFavoriteTeam(team, idLeague)),
     deleteFavoriteTeam: teamId => dispatch(deleteFavoriteTeam(teamId)),
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => ({
     clearPagination: () => dispatch(clearPagination()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(OneTeam);
+export default connect(mapStateToProps, mapDispatchToProps)(Team);
