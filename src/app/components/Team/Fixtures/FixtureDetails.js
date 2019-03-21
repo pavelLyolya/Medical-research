@@ -3,8 +3,14 @@ import { FixturesItem } from './FixturesList';
 
 const item = {
     id: 1,
-    homeTeam: 'FC Bayern',
-    awayTeam: 'FC Chealse',
+    homeTeam: {
+        id: 1,
+        name: 'FC Bayern',
+    },
+    awayTeam: {
+        id: 1,
+        name: 'FC Chealse',
+    },
     score: {
         homeTeam: 0,
         awayTeam: 3,
@@ -26,20 +32,38 @@ const statistics = {
 const lastGames = [
     {
         id: 1,
-        homeTeam: 'FC Bayern',
-        awayTeam: 'FC Chealse',
+        homeTeam: {
+            id: 1,
+            name: 'FC Bayern',
+        },
+        awayTeam: {
+            id: 1,
+            name: 'FC Chealse',
+        },
         utcDate: '1992-03-04T00:00:00Z',
     },
     {
         id: 2,
-        homeTeam: 'FC Bayern',
-        awayTeam: 'FC Chealse',
+        homeTeam: {
+            id: 1,
+            name: 'FC Bayern',
+        },
+        awayTeam: {
+            id: 1,
+            name: 'FC Chealse',
+        },
         utcDate: '1992-03-04T00:00:00Z',
     },
     {
         id: 3,
-        homeTeam: 'FC Bayern',
-        awayTeam: 'FC Chealse',
+        homeTeam: {
+            id: 1,
+            name: 'FC Bayern',
+        },
+        awayTeam: {
+            id: 1,
+            name: 'FC Chealse',
+        },
         utcDate: '1992-03-04T00:00:00Z',
     },
 ];

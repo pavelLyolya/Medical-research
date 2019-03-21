@@ -7,6 +7,7 @@ import favoriteTeams from './favoriteTeams';
 import isPlayersActive from './isPlayersActive';
 import currentTeam from './currentTeam';
 import pagination from './pagination';
+import fixtureDetails from './fixtureDetails';
 
 export default combineReducers({
     activeLeagueId,
@@ -17,4 +18,5 @@ export default combineReducers({
     isPlayersActive,
     currentTeam,
     pagination,
+    fixtureDetails,
 });

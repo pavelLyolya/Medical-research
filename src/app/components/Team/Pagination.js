@@ -19,7 +19,7 @@ class Pagination extends React.Component {
     }
 
     componentWillUnmount() {
-        this.props.clearPagination();
+        // this.props.clearPagination();
     }
 
     changeCountPerPage(e) {

@@ -1,17 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import TeamsHeader from '../../Teams/TeamsHeader';
-import FixturesList from './FixturesList';
+import FixturesList from '../../../containers/FixturesListContainer';
+import Pagination from '../../../containers/PaginationContainer';
+import DateChooser from './DateChooser';
 
-const Fixtures = ({ fixtures }) => fixtures && (
+const Fixtures = () => (
     <div className='fixtures'>
         <TeamsHeader headerName='Fixtures' />
-        <FixturesList fixtures={fixtures} />
+        <DateChooser />
+        <Pagination />
+        <FixturesList />
     </div>
 );
-
-Fixtures.propTypes = {
-    fixtures: PropTypes.array.isRequired,
-};
 
 export default Fixtures;

@@ -46,8 +46,8 @@ class Team extends React.Component {
         } else {
             TeamContent = (
                 <React.Fragment>
-                    <Fixtures fixtures={entities} />
-                    <FixtureDetails />
+                    <Fixtures />
+                    {this.props.fixtureDetails.isActive && <FixtureDetails />}
                 </React.Fragment>
             );
         }
@@ -82,6 +82,7 @@ Team.propTypes = {
     activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
     clearPagination: PropTypes.func.isRequired,
+    fixtureDetails: PropTypes.object.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
     deleteCurrentTeam: PropTypes.func.isRequired,

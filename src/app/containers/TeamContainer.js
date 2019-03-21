@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
     favoriteTeams: state.favoriteTeams,
     currentTeam: state.currentTeam.team,
     entities: state.pagination.entities,
+    fixtureDetails: state.fixtureDetails,
 });
 
 const mapDispatchToProps = dispatch => ({
