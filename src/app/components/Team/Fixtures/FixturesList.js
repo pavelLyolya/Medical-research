@@ -38,7 +38,7 @@ export class FixturesItem extends React.Component {
     render() {
         return (
             <div
-                className={this.props.isActive ? 'fixturesItemActive' : 'fixturesItem'}
+                className={this.props.isActive ? 'fixturesItemSelected' : 'fixturesItem'}
                 onClick={this.updateDetails}
             >
                 <header className='fixturesItemHeader'>
@@ -70,7 +70,7 @@ FixturesItem.propTypes = {
     isActive: PropTypes.bool,
     updateDetails: PropTypes.func,
     currentTeamId: PropTypes.number,
-    id: PropTypes.number.isRequired,
+    id: PropTypes.number,
     leagueId: PropTypes.number,
 
 };

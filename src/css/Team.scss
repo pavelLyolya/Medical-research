@@ -183,11 +183,14 @@ $shadow: 0 2px 3px #616161;
 }
 
 %fixturesItem {
+    position: relative;
+    bottom: 0;
     box-sizing: border-box;
     box-shadow: $shadow;
     margin: 10px 0;
     padding: 10px;
     font-size: 2rem;
+    transition: 0.2s 0.2s;
 
     .fixturesItemHeader {
         display: flex;
@@ -213,6 +216,10 @@ $shadow: 0 2px 3px #616161;
 .fixturesItem {
     @extend %fixturesItem;
     background-color: $gray-color;
+    &:hover {
+        bottom: 3px;
+        cursor: pointer;
+    }
 }
 
 .fixturesItemSelected {
