@@ -47,7 +47,14 @@ class Team extends React.Component {
             TeamContent = (
                 <React.Fragment>
                     <Fixtures />
-                    {this.props.fixtureDetails.isActive && <FixtureDetails />}
+                    {this.props.fixtureDetails.isActive && <FixtureDetails
+                        fixtureDetails={this.props.fixtureDetails}
+                        item={entities.find(
+                            entity => entity.id === this.props.fixtureDetails.activeItemId,
+                        )}
+                        clearFixtureDetails={this.props.clearFixtureDetails}
+
+                    />}
                 </React.Fragment>
             );
         }
@@ -82,6 +89,7 @@ Team.propTypes = {
     activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
     clearPagination: PropTypes.func.isRequired,
+    clearFixtureDetails: PropTypes.func.isRequired,
     fixtureDetails: PropTypes.object.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,

@@ -2,21 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FixtureStatistics = ({
-    mainTeam,
-    secondTeam,
+    firstWins,
+    secondWins,
     draws,
+    firstName,
+    secondName,
 }) => (
     <div className='fixtureStatistics'>
         <span>Statistics:</span>
-        <span>{mainTeam.name} wins: {mainTeam.wins}</span>
-        <span>{secondTeam.name} wins: {secondTeam.wins}</span>
+        <span>{firstName} wins: {firstWins}</span>
+        <span>{secondName} wins: {secondWins}</span>
         <span>Draws: {draws}</span>
     </div>
 );
 
 FixtureStatistics.propTypes = {
-    mainTeam: PropTypes.object.isRequired,
-    secondTeam: PropTypes.object.isRequired,
+    firstName: PropTypes.string.isRequired,
+    secondName: PropTypes.string.isRequired,
+    firstWins: PropTypes.number.isRequired,
+    secondWins: PropTypes.number.isRequired,
     draws: PropTypes.number.isRequired,
 };
 
@@ -27,12 +31,14 @@ export class FixturesItem extends React.Component {
     }
 
     updateDetails() {
-        this.props.updateDetails(
-            this.props.leagueId,
-            this.props.id,
-            this.props.currentTeamId,
-            this.props.awayTeam.id,
-        );
+        if (this.props.updateDetails) {
+            this.props.updateDetails(
+                this.props.leagueId,
+                this.props.id,
+                this.props.homeTeam.id,
+                this.props.awayTeam.id,
+            );
+        }
     }
 
     render() {
@@ -51,8 +57,10 @@ export class FixturesItem extends React.Component {
                 {this.props.statistics && <React.Fragment>
                     <hr />
                     <FixtureStatistics
-                        mainTeam={this.props.statistics.mainTeam}
-                        secondTeam={this.props.statistics.secondTeam}
+                        firstName={this.props.homeTeam.name}
+                        secondName={this.props.awayTeam.name}
+                        firstWins={this.props.statistics.firstWins}
+                        secondWins={this.props.statistics.secondWins}
                         draws={this.props.statistics.draws}
                     />
                 </React.Fragment>}

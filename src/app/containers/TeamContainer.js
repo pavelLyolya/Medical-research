@@ -4,6 +4,7 @@ import deleteFavoriteTeam from '../actions/deleteFavoriteTeam';
 import { addCurrentTeam, deleteCurrentTeam } from '../actions/currentTeam';
 import fetchTeam from '../actions/fetchTeam';
 import togglePlayersFixtures from '../actions/togglePlayersFixtures';
+import { clearFixtureDetails } from '../actions/fixtureDetails';
 import Team from '../components/Team/Team';
 import { clearPagination } from '../actions/pagination';
 
@@ -24,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
     addCurrentTeam: team => dispatch(addCurrentTeam(team)),
     deleteCurrentTeam: () => dispatch(deleteCurrentTeam()),
     clearPagination: () => dispatch(clearPagination()),
+    clearFixtureDetails: () => dispatch(clearFixtureDetails()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Team);

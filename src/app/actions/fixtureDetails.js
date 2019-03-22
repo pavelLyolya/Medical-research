@@ -12,12 +12,17 @@ const fixtureDetailsFetched = (statistics, headToHead) => ({
     headToHead,
 });
 
+export const clearFixtureDetails = () => ({
+    type: fixtDetails.CLEAR_DETAILS,
+});
+
 export const updateFixtureDetails = (
     leagueId,
     activeItemId,
     firstId,
     secondId,
 ) => async (dispatch) => {
+    dispatch(clearFixtureDetails());
     dispatch({
         type: fixtDetails.UPDATE_DETAILS,
         activeItemId,
@@ -30,7 +35,3 @@ export const updateFixtureDetails = (
     const statistics = buildStatistics(headToHead, firstId, secondId);
     dispatch(fixtureDetailsFetched(statistics, headToHead));
 };
-
-export const clearFixtureDetails = () => ({
-    type: fixtDetails.CLEAR_DETAILS,
-});
