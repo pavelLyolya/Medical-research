@@ -231,6 +231,10 @@ $shadow: 0 2px 3px #616161;
     
     .fixturesItem {
         margin: 0;
+        &:hover {
+            bottom: 0;
+            cursor: default;
+        }
     }
 }
 

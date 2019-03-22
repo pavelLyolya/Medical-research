@@ -53,6 +53,7 @@ select {
     background-image: none;
 }
 html {
+	overflow-y: scroll;
 	font-family: $main-font;
 	font-size: 10px;
 }
