@@ -5,8 +5,8 @@ import { api } from '../../src/app/services/api';
 import { URLS } from '../../src/app/services/constants';
 import { leagues } from '../../src/app/actions/actionTypes';
 import { mapObjectsToArrays, mapTeamsArray } from '../../src/app/services/validation/index';
-// import fetchStandings from '../../src/app/actions/fetchStandings';
-// import fetchTeams from '../../src/app/actions/fetchTeams';
+import fetchStandings from '../../src/app/actions/fetchStandings';
+import fetchTeams from '../../src/app/actions/fetchTeams';
 import { initialState } from '../../src/app/reducers/leagues';
 
 const middlewares = [thunk];
@@ -59,9 +59,8 @@ describe('Fetching data from API', () => {
             },
         ];
 
-        // await store.dispatch(fetchStandings(idLeague));
-        // expect(store.getActions()).toEqual(expectedActions);
-        expect(expectedActions).toEqual(expectedActions);
+        await store.dispatch(fetchStandings(idLeague));
+        expect(store.getActions()).toEqual(expectedActions);
     });
 
     test('fetches teams', async () => {
@@ -90,8 +89,7 @@ describe('Fetching data from API', () => {
             },
         ];
 
-        // await store.dispatch(fetchTeams(idLeague));
-        // expect(store.getActions()).toEqual(expectedActions);
-        expect(expectedActions).toEqual(expectedActions);
+        await store.dispatch(fetchTeams(idLeague));
+        expect(store.getActions()).toEqual(expectedActions);
     });
 });
