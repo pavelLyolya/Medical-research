@@ -12,7 +12,7 @@ const TeamFetched = (team, squad, fixtures) => ({
     fixtures,
 });
 
-const fetchTeam = id => async (dispatch) => {
+const fetchTeam = (id, leagueId) => async (dispatch) => {
     dispatch(fetchingTeam());
     const data = await getTeam(id);
     const team = {
@@ -20,6 +20,7 @@ const fetchTeam = id => async (dispatch) => {
         name: data.name,
         shortName: data.shortName,
         imgURL: data.crestUrl,
+        leagueId,
     };
     const squad = data.squad.sort((team1, team2) => {
         if (!team1.shirtNumber) {

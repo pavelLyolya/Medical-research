@@ -11,6 +11,7 @@ import { clearPagination } from '../actions/pagination';
 const mapStateToProps = state => ({
     activeLeagueId: state.activeLeagueId,
     isPlayersActive: state.isPlayersActive,
+    isFavoritesShown: state.isFavoritesShown,
     favoriteTeams: state.favoriteTeams,
     currentTeam: state.currentTeam.team,
     entities: state.pagination.entities,
@@ -18,7 +19,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchTeam: id => dispatch(fetchTeam(id)),
+    fetchTeam: (id, teamId) => dispatch(fetchTeam(id, teamId)),
     togglePlayersFixtures: () => dispatch(togglePlayersFixtures()),
     addFavoriteTeam: (team, idLeague) => dispatch(addFavoriteTeam(team, idLeague)),
     deleteFavoriteTeam: teamId => dispatch(deleteFavoriteTeam(teamId)),

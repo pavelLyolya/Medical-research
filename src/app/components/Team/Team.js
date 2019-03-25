@@ -17,7 +17,15 @@ class Team extends React.Component {
 
     componentDidMount() {
         // eslint-disable-next-line react/prop-types
-        this.props.fetchTeam(this.props.match.params.id);
+        const teamId = +this.props.match.params.id;
+        if (this.props.isFavoritesShown) {
+            const foundTeam = this.props.favoriteTeams.find(item => teamId === item.teamId);
+            if (foundTeam) {
+                this.props.fetchTeam(teamId, foundTeam.leagueId);
+            }
+        } else {
+            this.props.fetchTeam(teamId, this.props.activeLeagueId);
+        }
     }
 
     componentWillUnmount() {
@@ -85,6 +93,7 @@ Team.propTypes = {
     currentTeam: PropTypes.object,
     entities: PropTypes.array,
     isPlayersActive: PropTypes.bool.isRequired,
+    isFavoritesShown: PropTypes.bool.isRequired,
     favoriteTeams: PropTypes.array.isRequired,
     activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,

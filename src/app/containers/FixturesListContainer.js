@@ -4,7 +4,8 @@ import * as fixtureDetails from '../actions/fixtureDetails';
 
 const mapStateToProps = state => ({
     currentTeamId: state.currentTeam.team.teamId,
-    leagueId: state.activeLeagueId,
+    leagueId: state.currentTeam.team.leagueId,
+    isFavoritesShown: state.isFavoritesShown,
     fixtureDetails: state.fixtureDetails,
     fixtures: !state.isPlayersActive ? state.pagination.entities : null,
 });
