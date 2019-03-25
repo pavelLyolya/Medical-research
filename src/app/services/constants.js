@@ -13,3 +13,5 @@ export const URLS = {
 };
 
 export const FAVORITE_TEAMS_KEY = 'favoriteTeams';
+
+export const matchStatusFinished = 'FINISHED';
