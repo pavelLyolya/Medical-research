@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    setDefaultDates: () => dispatch(date.setDefaultDates()),
     updateDateFrom: dateString => dispatch(date.updateDateFrom(dateString)),
     updateDateTo: dateString => dispatch(date.updateDateTo(dateString)),
 });

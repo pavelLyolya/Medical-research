@@ -2,25 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FixtureStatistics = ({
-    firstWins,
-    secondWins,
+    homeTeamWins,
+    awayTeamWins,
     draws,
-    firstName,
-    secondName,
+    homeTeamName,
+    awayTeamName,
 }) => (
     <div className='fixtureStatistics'>
         <span>Statistics:</span>
-        <span>{firstName} wins: {firstWins}</span>
-        <span>{secondName} wins: {secondWins}</span>
+        <span>{homeTeamName} wins: {homeTeamWins}</span>
+        <span>{awayTeamName} wins: {awayTeamWins}</span>
         <span>Draws: {draws}</span>
     </div>
 );
 
 FixtureStatistics.propTypes = {
-    firstName: PropTypes.string.isRequired,
-    secondName: PropTypes.string.isRequired,
-    firstWins: PropTypes.number.isRequired,
-    secondWins: PropTypes.number.isRequired,
+    homeTeamName: PropTypes.string.isRequired,
+    awayTeamName: PropTypes.string.isRequired,
+    homeTeamWins: PropTypes.number.isRequired,
+    awayTeamWins: PropTypes.number.isRequired,
     draws: PropTypes.number.isRequired,
 };
 
@@ -57,10 +57,10 @@ export class FixturesItem extends React.Component {
                 {this.props.statistics && <React.Fragment>
                     <hr />
                     <FixtureStatistics
-                        firstName={this.props.homeTeam.name}
-                        secondName={this.props.awayTeam.name}
-                        firstWins={this.props.statistics.firstWins}
-                        secondWins={this.props.statistics.secondWins}
+                        homeTeamName={this.props.homeTeam.name}
+                        awayTeamName={this.props.awayTeam.name}
+                        homeTeamWins={this.props.statistics.firstWins}
+                        awayTeamWins={this.props.statistics.secondWins}
                         draws={this.props.statistics.draws}
                     />
                 </React.Fragment>}
@@ -90,24 +90,22 @@ const FixturesList = ({
     updateDetails,
     leagueId,
 }) => fixtures && (
-    <React.Fragment>
-        <section className='fixturesList'>
-            {fixtures.map(item => (
-                <FixturesItem
-                    key={item.id}
-                    id={item.id}
-                    isActive={item.id === fixtureDetails.activeItemId}
-                    currentTeamId={currentTeamId}
-                    homeTeam={item.homeTeam}
-                    awayTeam={item.awayTeam}
-                    score={item.score.fullTime}
-                    utcDate={item.utcDate}
-                    updateDetails={updateDetails}
-                    leagueId={leagueId}
-                />
-            ))}
-        </section>
-    </React.Fragment>
+    <section className='fixturesList'>
+        {fixtures.map(item => (
+            <FixturesItem
+                key={item.id}
+                id={item.id}
+                isActive={item.id === fixtureDetails.activeItemId}
+                currentTeamId={currentTeamId}
+                homeTeam={item.homeTeam}
+                awayTeam={item.awayTeam}
+                score={item.score.fullTime}
+                utcDate={item.utcDate}
+                updateDetails={updateDetails}
+                leagueId={leagueId}
+            />
+        ))}
+    </section>
 );
 
 FixturesList.propTypes = {

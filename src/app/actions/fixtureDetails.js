@@ -17,10 +17,10 @@ export const clearFixtureDetails = () => ({
 });
 
 export const updateFixtureDetails = (
-    leagueId,
+    activeItemleagueId,
     activeItemId,
-    firstId,
-    secondId,
+    homeTeamId,
+    awayTeamId,
 ) => async (dispatch) => {
     dispatch(clearFixtureDetails());
     dispatch({
@@ -28,10 +28,10 @@ export const updateFixtureDetails = (
         activeItemId,
     });
     dispatch(fetchingFixtureDetails());
-    const headToHead = (await getDetails(leagueId)).filter(
-        match => (match.homeTeam.id === firstId && match.awayTeam.id === secondId)
-        || (match.homeTeam.id === secondId && match.awayTeam.id === firstId),
+    const headToHead = (await getDetails(activeItemleagueId)).filter(
+        match => (match.homeTeam.id === homeTeamId && match.awayTeam.id === awayTeamId)
+        || (match.homeTeam.id === awayTeamId && match.awayTeam.id === homeTeamId),
     );
-    const statistics = buildStatistics(headToHead, firstId, secondId);
+    const statistics = buildStatistics(headToHead, homeTeamId, awayTeamId);
     dispatch(fixtureDetailsFetched(statistics, headToHead));
 };

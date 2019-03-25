@@ -53,3 +53,4 @@ export const fixtDetails = {
 
 export const UPDATE_DATE_TO = 'UPDATE_DATE_TO';
 export const UPDATE_DATE_FROM = 'UPDATE_DATE_FROM';
+export const SET_DEFAULT_DATES = 'SET_DEFAULT_DATES';

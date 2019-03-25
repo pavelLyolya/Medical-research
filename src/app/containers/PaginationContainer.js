@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
     pagesNumber: state.pagination.pagesNumber,
     itemsPerPage: state.pagination.itemsPerPage,
     isPlayersActive: state.isPlayersActive,
-    mainArray: state.isPlayersActive ? state.currentTeam.squad : state.currentTeam.fixtures,
+    selectedArray: state.isPlayersActive ? state.currentTeam.squad : state.currentTeam.fixtures,
     entities: state.pagination.entities,
     dateFrom: state.date.dateFrom,
     dateTo: state.date.dateTo,

@@ -1,20 +1,21 @@
 import {
     UPDATE_DATE_TO,
     UPDATE_DATE_FROM,
+    SET_DEFAULT_DATES,
 } from '../actions/actionTypes';
 
-const today = (new Date()).toISOString().substring(0, 10);
-let twoWeeksLater = new Date();
-twoWeeksLater.setDate(twoWeeksLater.getDate() + 14);
-twoWeeksLater = twoWeeksLater.toISOString().substring(0, 10);
-
 const defaultState = {
-    dateFrom: today,
-    dateTo: twoWeeksLater,
+    dateFrom: null,
+    dateTo: null,
 };
 
 const date = (state = defaultState, action) => {
     switch (action.type) {
+        case SET_DEFAULT_DATES:
+            return {
+                dateFrom: action.dateFrom,
+                dateTo: action.dateTo,
+            };
         case UPDATE_DATE_TO:
             return {
                 ...state,

@@ -8,6 +8,10 @@ class DateChooser extends React.Component {
         this.updateDateTo = this.updateDateTo.bind(this);
     }
 
+    componentDidMount() {
+        this.props.setDefaultDates();
+    }
+
     updateDateFrom(e) {
         if (e.target.value) {
             this.props.updateDateFrom(e.target.value);
@@ -51,8 +55,9 @@ class DateChooser extends React.Component {
 }
 
 DateChooser.propTypes = {
-    dateFrom: PropTypes.string.isRequired,
-    dateTo: PropTypes.string.isRequired,
+    dateFrom: PropTypes.string,
+    dateTo: PropTypes.string,
+    setDefaultDates: PropTypes.func.isRequired,
     updateDateFrom: PropTypes.func.isRequired,
     updateDateTo: PropTypes.func.isRequired,
 };
