@@ -25,6 +25,20 @@ class Pagination extends React.Component {
         );
     }
 
+    componentDidUpdate(prevProps) {
+        if (!this.props.isPlayersActive
+            && (prevProps.dateFrom !== this.props.dateFrom
+                || prevProps.dateTo !== this.props.dateTo)) {
+            this.mainArray = this.props.mainArray.filter(item => (
+                item.utcDate >= this.props.dateFrom && item.utcDate <= this.props.dateTo
+            ));
+            this.props.setPagesNumber(this.mainArray, this.props.itemsPerPage);
+            this.props.setPaginated(
+                this.mainArray, this.props.itemsPerPage, this.props.currentPage,
+            );
+        }
+    }
+
     componentWillUnmount() {
         // this.props.clearPagination();
     }
