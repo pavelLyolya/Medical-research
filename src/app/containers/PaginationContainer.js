@@ -9,6 +9,8 @@ const mapStateToProps = state => ({
     isPlayersActive: state.isPlayersActive,
     mainArray: state.isPlayersActive ? state.currentTeam.squad : state.currentTeam.fixtures,
     entities: state.pagination.entities,
+    dateFrom: state.date.dateFrom,
+    dateTo: state.date.dateTo,
 });
 
 const mapDispatchToProps = dispatch => ({

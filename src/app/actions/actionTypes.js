@@ -50,3 +50,6 @@ export const fixtDetails = {
     UPDATE_DETAILS: 'UPDATE_DETAILS',
     CLEAR_DETAILS: 'CLEAR_DETAILS',
 };
+
+export const UPDATE_DATE_TO = 'UPDATE_DATE_TO';
+export const UPDATE_DATE_FROM = 'UPDATE_DATE_FROM';

@@ -4,6 +4,13 @@ import PropTypes from 'prop-types';
 class Pagination extends React.Component {
     constructor(props) {
         super(props);
+        if (!this.props.isPlayersActive) {
+            this.mainArray = this.props.mainArray.filter(item => (
+                item.utcDate >= props.dateFrom && item.utcDate <= props.dateTo
+            ));
+        } else {
+            this.mainArray = props.mainArray;
+        }
         this.changeCountPerPage = this.changeCountPerPage.bind(this);
         this.goToFirst = this.goToFirst.bind(this);
         this.goToPrev = this.goToPrev.bind(this);
@@ -12,9 +19,9 @@ class Pagination extends React.Component {
     }
 
     componentDidMount() {
-        this.props.setPagesNumber(this.props.mainArray, this.props.itemsPerPage);
+        this.props.setPagesNumber(this.mainArray, this.props.itemsPerPage);
         this.props.setPaginated(
-            this.props.mainArray, this.props.itemsPerPage, this.props.currentPage,
+            this.mainArray, this.props.itemsPerPage, this.props.currentPage,
         );
     }
 
@@ -24,14 +31,14 @@ class Pagination extends React.Component {
 
     changeCountPerPage(e) {
         this.props.changeCountPerPage(+e.target.value);
-        this.props.setPagesNumber(this.props.mainArray, +e.target.value);
-        this.props.setPaginated(this.props.mainArray, +e.target.value, 1);
+        this.props.setPagesNumber(this.mainArray, +e.target.value);
+        this.props.setPaginated(this.mainArray, +e.target.value, 1);
     }
 
     goToFirst() {
         this.props.goToFirst();
         this.props.setPaginated(
-            this.props.mainArray, this.props.itemsPerPage, 1,
+            this.mainArray, this.props.itemsPerPage, 1,
         );
     }
 
@@ -39,7 +46,7 @@ class Pagination extends React.Component {
         if (this.props.currentPage > 1) {
             this.props.goToPrev();
             this.props.setPaginated(
-                this.props.mainArray, this.props.itemsPerPage, this.props.currentPage - 1,
+                this.mainArray, this.props.itemsPerPage, this.props.currentPage - 1,
             );
         }
     }
@@ -48,7 +55,7 @@ class Pagination extends React.Component {
         if (this.props.currentPage < this.props.pagesNumber) {
             this.props.goToNext();
             this.props.setPaginated(
-                this.props.mainArray, this.props.itemsPerPage, this.props.currentPage + 1,
+                this.mainArray, this.props.itemsPerPage, this.props.currentPage + 1,
             );
         }
     }
@@ -56,7 +63,7 @@ class Pagination extends React.Component {
     goToLast() {
         this.props.goToLast();
         this.props.setPaginated(
-            this.props.mainArray, this.props.itemsPerPage, this.props.pagesNumber,
+            this.mainArray, this.props.itemsPerPage, this.props.pagesNumber,
         );
     }
 
@@ -105,6 +112,8 @@ Pagination.propTypes = {
     isPlayersActive: PropTypes.bool,
     mainArray: PropTypes.array,
     entities: PropTypes.array,
+    dateFrom: PropTypes.string.isRequired,
+    dateTo: PropTypes.string.isRequired,
     goToNext: PropTypes.func.isRequired,
     goToPrev: PropTypes.func.isRequired,
     goToLast: PropTypes.func.isRequired,

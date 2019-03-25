@@ -1,33 +1,38 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
-const DateChooser = () => (
-    <div className='dateChooser'>
-        <form className='dateForm'>
-            <div className='rowChooserForm'>
-                <label htmlFor="start">Start date:</label>
-                <input
-                    type="date"
-                    id="start"
-                    name="trip-start"
-                    defaultValue="2018-07-22"
-                />
+class DateChooser extends React.Component {
+    render() {
+        return (
+            <div className='dateChooser'>
+                <form className='dateForm'>
+                    <div className='rowChooserForm'>
+                        <label htmlFor="start">Start date:</label>
+                        <input
+                            type="date"
+                            id="start"
+                            name="trip-start"
+                            defaultValue={this.props.dateFrom}
+                        />
+                    </div>
+                    <div className='rowChooserForm'>
+                        <label htmlFor="end">End date:</label>
+                        <input
+                            type="date"
+                            id="end"
+                            name="trip-start"
+                            defaultValue={this.props.dateTo}
+                        />
+                    </div>
+                </form>
             </div>
-            <div className='rowChooserForm'>
-                <label htmlFor="end">End date:</label>
-                <input
-                    type="date"
-                    id="end"
-                    name="trip-start"
-                    defaultValue="2018-07-22"
-                />
-            </div>
-        </form>
-    </div>
-);
+        );
+    }
+}
 
-// Players.propTypes = {
-//     players: PropTypes.array.isRequired,
-// };
+DateChooser.propTypes = {
+    dateFrom: PropTypes.string.isRequired,
+    dateTo: PropTypes.string.isRequired,
+};
 
 export default DateChooser;
