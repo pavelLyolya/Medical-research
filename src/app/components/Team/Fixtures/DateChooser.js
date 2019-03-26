@@ -4,23 +4,17 @@ import PropTypes from 'prop-types';
 class DateChooser extends React.Component {
     constructor(props) {
         super(props);
-        this.updateDateFrom = this.updateDateFrom.bind(this);
-        this.updateDateTo = this.updateDateTo.bind(this);
+        this.updateDateFrom = this.updateDate.bind(this, props.updateDateFrom);
+        this.updateDateTo = this.updateDate.bind(this, props.updateDateTo);
     }
 
     componentDidMount() {
         this.props.setDefaultDates();
     }
 
-    updateDateFrom(e) {
+    updateDate(callback, e) {
         if (e.target.value) {
-            this.props.updateDateFrom(e.target.value);
-        }
-    }
-
-    updateDateTo(e) {
-        if (e.target.value) {
-            this.props.updateDateTo(e.target.value);
+            callback(e.target.value);
         }
     }
 
