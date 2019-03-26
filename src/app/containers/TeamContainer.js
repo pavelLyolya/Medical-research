@@ -1,4 +1,6 @@
 import { connect } from 'react-redux';
+import changeActivePage from '../actions/changeActivePage';
+import { pageNames } from '../services/constants';
 import addFavoriteTeam from '../actions/addFavoriteTeam';
 import deleteFavoriteTeam from '../actions/deleteFavoriteTeam';
 import { addCurrentTeam, deleteCurrentTeam } from '../actions/currentTeam';
@@ -19,6 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+    activateTeams: () => dispatch(changeActivePage(pageNames.TEAMS)),
     fetchTeam: (id, teamId) => dispatch(fetchTeam(id, teamId)),
     togglePlayersFixtures: () => dispatch(togglePlayersFixtures()),
     addFavoriteTeam: (team, idLeague) => dispatch(addFavoriteTeam(team, idLeague)),

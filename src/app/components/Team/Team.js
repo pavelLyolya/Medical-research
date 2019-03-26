@@ -16,6 +16,7 @@ class Team extends React.Component {
     }
 
     componentDidMount() {
+        this.props.activateTeams();
         // eslint-disable-next-line react/prop-types
         const teamId = +this.props.match.params.id;
         if (this.props.isFavoritesShown) {
@@ -90,6 +91,7 @@ class Team extends React.Component {
 }
 
 Team.propTypes = {
+    activateTeams: PropTypes.func.isRequired,
     currentTeam: PropTypes.object,
     entities: PropTypes.array,
     isPlayersActive: PropTypes.bool.isRequired,

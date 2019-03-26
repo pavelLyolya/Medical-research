@@ -6,6 +6,7 @@ import '../../../css/TableStandings.scss';
 
 class TableStandings extends React.Component {
     componentDidMount() {
+        this.props.activateTable();
         this.props.fetchStandings(this.props.activeLeagueId);
     }
 
@@ -32,6 +33,7 @@ TableStandings.propTypes = {
     leagues: PropTypes.array.isRequired,
     changeActiveLeague: PropTypes.func.isRequired,
     fetchStandings: PropTypes.func.isRequired,
+    activateTable: PropTypes.func.isRequired,
 };
 
 export default TableStandings;
