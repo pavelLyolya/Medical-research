@@ -1,4 +1,4 @@
-import { FAVORITE_TEAMS_KEY } from './constants';
+import { FAVORITE_TEAMS_KEY, matchStatusFinished } from './constants';
 
 export const findTeamInLeagues = (leaguesArray, leagueId, teamId) => {
     const foundLeague = leaguesArray.find(league => league.id === leagueId);
@@ -66,3 +66,33 @@ export const paginate = (array, countPerPage, pageNumber) => {
 };
 
 export const countPagesNumber = (array, countPerPage) => Math.ceil(array.length / countPerPage);
+
+export const buildStatistics = (headToHead, firstId, secondId) => {
+    const AWAY_TEAM = 'AWAY_TEAM';
+    const HOME_TEAM = 'HOME_TEAM';
+    const statistics = {
+        firstWins: 0,
+        secondWins: 0,
+        draws: 0,
+    };
+    headToHead.forEach((match) => {
+        if (match.status === matchStatusFinished) {
+            if (match.score.winner === HOME_TEAM) {
+                if (match.homeTeam.id === firstId) {
+                    statistics.firstWins += 1;
+                } else if (match.homeTeam.id === secondId) {
+                    statistics.secondWins += 1;
+                }
+            } else if (match.score.winner === AWAY_TEAM) {
+                if (match.awayTeam.id === firstId) {
+                    statistics.firstWins += 1;
+                } else if (match.awayTeam.id === secondId) {
+                    statistics.secondWins += 1;
+                }
+            } else {
+                statistics.draws += 1;
+            }
+        }
+    });
+    return statistics;
+};

@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import changeActiveLeague from '../actions/changeActiveLeague';
+import { pageNames } from '../services/constants';
+import changeActivePage from '../actions/changeActivePage';
 import fetchStandings from '../actions/fetchStandings';
 import TableStandings from '../components/TableStandings/TableStandings';
 
@@ -9,6 +11,7 @@ const mapState = state => ({
 });
 
 const mapDispatch = dispatch => ({
+    activateTable: () => dispatch(changeActivePage(pageNames.TABLE)),
     changeActiveLeague: id => dispatch(changeActiveLeague(id)),
     fetchStandings: id => dispatch(fetchStandings(id)),
 });

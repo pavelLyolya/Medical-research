@@ -22,6 +22,7 @@ const favoriteTeams = (state = defaultState, action) => {
                 team: action.team,
                 squad: action.squad,
                 fixtures: action.fixtures,
+                leagueId: action.team.leagueId,
             };
         case current.DELETE_CURRENT_TEAM:
             return defaultState;

@@ -1,69 +1,50 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FixturesItem } from './FixturesList';
 
-const item = {
-    id: 1,
-    homeTeam: 'FC Bayern',
-    awayTeam: 'FC Chealse',
-    score: {
-        homeTeam: 0,
-        awayTeam: 3,
-    },
-    utcDate: '1992-03-04T00:00:00Z',
-};
+class FixtureDetails extends React.Component {
+    componentWillUnmount() {
+        this.props.clearFixtureDetails();
+    }
 
-const statistics = {
-    mainTeam: {
-        name: 'FC Bayern',
-        wins: 3,
-    },
-    secondTeam: {
-        name: 'FC Chealse',
-        wins: 4,
-    },
-    draws: 3,
-};
-const lastGames = [
-    {
-        id: 1,
-        homeTeam: 'FC Bayern',
-        awayTeam: 'FC Chealse',
-        utcDate: '1992-03-04T00:00:00Z',
-    },
-    {
-        id: 2,
-        homeTeam: 'FC Bayern',
-        awayTeam: 'FC Chealse',
-        utcDate: '1992-03-04T00:00:00Z',
-    },
-    {
-        id: 3,
-        homeTeam: 'FC Bayern',
-        awayTeam: 'FC Chealse',
-        utcDate: '1992-03-04T00:00:00Z',
-    },
-];
-
-const FixtureDetails = () => (
-    <div className='fixtureDetails'>
-        <FixturesItem
-            homeTeam={item.homeTeam}
-            awayTeam={item.awayTeam}
-            score={item.score}
-            utcDate={item.utcDate}
-            statistics={statistics}
-        />
-        <div className='lastGamesPanel'>
-            {lastGames.map(game => (
+    render() {
+        if (
+            !this.props.item
+            || !this.props.fixtureDetails.statistics
+            || !this.props.fixtureDetails.headToHead
+        ) {
+            return null;
+        }
+        return (
+            <div className='fixtureDetails'>
                 <FixturesItem
-                    key={game.id}
-                    homeTeam={game.homeTeam}
-                    awayTeam={game.awayTeam}
-                    utcDate={game.utcDate}
+                    homeTeam={this.props.item.homeTeam}
+                    awayTeam={this.props.item.awayTeam}
+                    score={this.props.item.score.fullTime}
+                    utcDate={this.props.item.utcDate}
+                    statistics={this.props.fixtureDetails.statistics}
                 />
-            ))}
-        </div>
-    </div>
-);
+                <div className='lastGamesPanel'>
+                    {this.props.fixtureDetails.headToHead.map(game => (
+                        <FixturesItem
+                            key={game.id}
+                            isActive={game.id === this.props.fixtureDetails.activeItemId}
+                            homeTeam={game.homeTeam}
+                            awayTeam={game.awayTeam}
+                            score={game.score.fullTime}
+                            utcDate={game.utcDate}
+                        />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+}
+
+FixtureDetails.propTypes = {
+    fixtureDetails: PropTypes.object,
+    item: PropTypes.object,
+    clearFixtureDetails: PropTypes.func,
+};
 
 export default FixtureDetails;

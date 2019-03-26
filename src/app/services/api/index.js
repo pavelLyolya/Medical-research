@@ -10,12 +10,12 @@ export const getData = uri => api.get(uri)
     .then(res => res.data);
 
 export const getAllStandings = async (idLeague) => {
-    const standings = await getData(`${URLS.competitions}/${idLeague}/${URLS.standings}`);
+    const standings = await getData(`${URLS.competitions}/${idLeague}${URLS.standings}`);
     return standings;
 };
 
 export const getAllTeams = async (idLeague) => {
-    const teams = await getData(`${URLS.competitions}/${idLeague}/${URLS.teams}`);
+    const teams = await getData(`${URLS.competitions}/${idLeague}${URLS.teams}`);
     return teams;
 };
 
@@ -24,4 +24,12 @@ export const getTeam = async (id) => {
     const matches = await getData(`${URLS.teams}/${id}${URLS.matches}`);
     team.fixtures = matches.matches;
     return team;
+};
+
+export const getDetails = async (idLeague) => {
+    let matches;
+    ({ matches } = await getData(`${URLS.competitions}/${idLeague}${URLS.matches}${URLS.season2017}`));
+    const allMatches = matches;
+    ({ matches } = await getData(`${URLS.competitions}/${idLeague}${URLS.matches}${URLS.season2018}`));
+    return allMatches.concat(matches);
 };

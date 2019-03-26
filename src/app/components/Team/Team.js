@@ -16,8 +16,17 @@ class Team extends React.Component {
     }
 
     componentDidMount() {
+        this.props.activateTeams();
         // eslint-disable-next-line react/prop-types
-        this.props.fetchTeam(this.props.match.params.id);
+        const teamId = +this.props.match.params.id;
+        if (this.props.isFavoritesShown) {
+            const foundTeam = this.props.favoriteTeams.find(item => teamId === item.teamId);
+            if (foundTeam) {
+                this.props.fetchTeam(teamId, foundTeam.leagueId);
+            }
+        } else {
+            this.props.fetchTeam(teamId, this.props.activeLeagueId);
+        }
     }
 
     componentWillUnmount() {
@@ -46,8 +55,15 @@ class Team extends React.Component {
         } else {
             TeamContent = (
                 <React.Fragment>
-                    <Fixtures fixtures={entities} />
-                    <FixtureDetails />
+                    <Fixtures />
+                    {this.props.fixtureDetails.isActive && <FixtureDetails
+                        fixtureDetails={this.props.fixtureDetails}
+                        item={entities.find(
+                            entity => entity.id === this.props.fixtureDetails.activeItemId,
+                        )}
+                        clearFixtureDetails={this.props.clearFixtureDetails}
+
+                    />}
                 </React.Fragment>
             );
         }
@@ -75,13 +91,17 @@ class Team extends React.Component {
 }
 
 Team.propTypes = {
+    activateTeams: PropTypes.func.isRequired,
     currentTeam: PropTypes.object,
     entities: PropTypes.array,
     isPlayersActive: PropTypes.bool.isRequired,
+    isFavoritesShown: PropTypes.bool.isRequired,
     favoriteTeams: PropTypes.array.isRequired,
     activeLeagueId: PropTypes.number.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
     clearPagination: PropTypes.func.isRequired,
+    clearFixtureDetails: PropTypes.func.isRequired,
+    fixtureDetails: PropTypes.object.isRequired,
     addFavoriteTeam: PropTypes.func.isRequired,
     deleteFavoriteTeam: PropTypes.func.isRequired,
     deleteCurrentTeam: PropTypes.func.isRequired,
