@@ -17,6 +17,10 @@ class Teams extends React.Component {
         this.props.fetchTeams(this.props.activeLeagueId);
     }
 
+    componentWillUnmount() {
+        this.props.deactivateTeams();
+    }
+
     changeActiveLeague(e) {
         this.props.changeActiveLeague(+e.target.value);
     }
@@ -65,6 +69,7 @@ class Teams extends React.Component {
 
 Teams.propTypes = {
     activateTeams: PropTypes.func.isRequired,
+    deactivateTeams: PropTypes.func.isRequired,
     activeLeagueId: PropTypes.number.isRequired,
     leagues: PropTypes.array.isRequired,
     changeActiveLeague: PropTypes.func.isRequired,

@@ -12,6 +12,7 @@ const mapState = state => ({
 
 const mapDispatch = dispatch => ({
     activateTable: () => dispatch(changeActivePage(pageNames.TABLE)),
+    deactivateTable: () => dispatch(changeActivePage('')),
     changeActiveLeague: id => dispatch(changeActiveLeague(id)),
     fetchStandings: id => dispatch(fetchStandings(id)),
 });

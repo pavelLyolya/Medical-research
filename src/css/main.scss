@@ -61,20 +61,48 @@ main {
 	max-width: 1024px;
 	min-height: 86vh;
 	margin: 0 auto;
-	padding: 3% 0;
+	// padding: 3% 0;
 	box-sizing: border-box;
 }
 .homePage {
-	position: absolute;
-	left: 0;
-	top: 7vh;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
 	width: 100%;
 	min-height: 86vh;
 	box-sizing: border-box;
-	box-shadow: inset 0 30px 20px -15px $main-color, inset 0 -30px 20px -15px $main-color;
-	background-image: url('https://i.pinimg.com/originals/d3/7c/2a/d37c2a46ace3ca442597edd73f3adb8f.jpg');
-	background-position: center;
-	background-size: cover;
+	background-image: url('https://i.imgur.com/Cl7fkcR.png');
+	background-position: bottom left;
+	background-size: 60% auto;
+	background-repeat: no-repeat;
+	font-size: 4rem;
+
+	.description {
+		margin: 2% 0;
+		visibility: hidden;
+		&:nth-child(1) {
+			animation: fadeIn 4s forwards;
+		}
+		&:nth-child(2) {
+			animation: fadeIn 4s 2s forwards;
+		}
+		&:nth-child(3) {
+			animation: fadeIn 4s 4s forwards;
+		}
+		&:nth-child(4) {
+			animation: fadeIn 4s 6s forwards;
+		}
+	}
+
+	@keyframes fadeIn {
+		0% {
+		  opacity: 0;
+		}
+		100% {
+		  visibility: visible;
+		  opacity: 1;
+		}
+	}
 }
 button {
 	font-family: $main-font;
