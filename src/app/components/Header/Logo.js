@@ -1,8 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Logo = () => (
     <h1>
-        Football statistics
+        <Link
+            to='/'
+            className='logo'
+        >Football statistics</Link>
     </h1>
 );
 
