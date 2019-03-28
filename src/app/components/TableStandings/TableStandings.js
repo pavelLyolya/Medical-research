@@ -10,6 +10,10 @@ class TableStandings extends React.Component {
         this.props.fetchStandings(this.props.activeLeagueId);
     }
 
+    componentWillUnmount() {
+        this.props.deactivateTable();
+    }
+
     render() {
         return (
             <section className='tableLeague'>
@@ -34,6 +38,7 @@ TableStandings.propTypes = {
     changeActiveLeague: PropTypes.func.isRequired,
     fetchStandings: PropTypes.func.isRequired,
     activateTable: PropTypes.func.isRequired,
+    deactivateTable: PropTypes.func.isRequired,
 };
 
 export default TableStandings;

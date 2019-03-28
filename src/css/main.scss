@@ -61,8 +61,47 @@ main {
 	max-width: 1024px;
 	min-height: 86vh;
 	margin: 0 auto;
-	padding: 3% 0;
 	box-sizing: border-box;
+}
+.homePage {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	width: 100%;
+	min-height: 86vh;
+	box-sizing: border-box;
+	background-image: url('https://i.imgur.com/Cl7fkcR.png');
+	background-position: bottom left;
+	background-size: 60% auto;
+	background-repeat: no-repeat;
+	font-size: 4rem;
+
+	.description {
+		margin: 2% 0;
+		visibility: hidden;
+		&:nth-child(1) {
+			animation: fadeIn 4s forwards;
+		}
+		&:nth-child(2) {
+			animation: fadeIn 4s 2s forwards;
+		}
+		&:nth-child(3) {
+			animation: fadeIn 4s 4s forwards;
+		}
+		&:nth-child(4) {
+			animation: fadeIn 4s 6s forwards;
+		}
+	}
+
+	@keyframes fadeIn {
+		0% {
+		  opacity: 0;
+		}
+		100% {
+		  visibility: visible;
+		  opacity: 1;
+		}
+	}
 }
 button {
 	font-family: $main-font;

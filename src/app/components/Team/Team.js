@@ -30,6 +30,7 @@ class Team extends React.Component {
     }
 
     componentWillUnmount() {
+        this.props.deactivateTeams();
         this.props.deleteCurrentTeam();
     }
 
@@ -92,6 +93,7 @@ class Team extends React.Component {
 
 Team.propTypes = {
     activateTeams: PropTypes.func.isRequired,
+    deactivateTeams: PropTypes.func.isRequired,
     currentTeam: PropTypes.object,
     entities: PropTypes.array,
     isPlayersActive: PropTypes.bool.isRequired,

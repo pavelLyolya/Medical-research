@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     activateTeams: () => dispatch(changeActivePage(pageNames.TEAMS)),
+    deactivateTeams: () => dispatch(changeActivePage('')),
     changeActiveLeague: (id) => {
         dispatch(changeActiveLeague(id));
         dispatch(fetchTeams(id));

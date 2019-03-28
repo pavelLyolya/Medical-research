@@ -22,6 +22,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     activateTeams: () => dispatch(changeActivePage(pageNames.TEAMS)),
+    deactivateTeams: () => dispatch(changeActivePage('')),
     fetchTeam: (id, teamId) => dispatch(fetchTeam(id, teamId)),
     togglePlayersFixtures: () => dispatch(togglePlayersFixtures()),
     addFavoriteTeam: (team, idLeague) => dispatch(addFavoriteTeam(team, idLeague)),
