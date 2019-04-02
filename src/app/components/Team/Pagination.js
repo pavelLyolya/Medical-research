@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
+import globalizationHelper from '../globalizationHelper';
 
 class Pagination extends React.Component {
     constructor(props) {
@@ -122,7 +122,7 @@ class Pagination extends React.Component {
 }
 
 Pagination.propTypes = {
-    t: PropTypes.func.isRequired,
+    t: PropTypes.func,
     currentPage: PropTypes.number.isRequired,
     pagesNumber: PropTypes.number,
     itemsPerPage: PropTypes.number.isRequired,
@@ -141,4 +141,4 @@ Pagination.propTypes = {
     clearPagination: PropTypes.func.isRequired,
 };
 
-export default withTranslation('common')(Pagination);
+export default globalizationHelper(Pagination);

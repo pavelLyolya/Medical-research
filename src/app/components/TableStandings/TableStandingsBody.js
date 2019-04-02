@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
-import i18nInstance from '../../../i18n';
+import globalizationHelper from '../globalizationHelper';
 import TableStandingsRow from './TableStandingsRow';
 
-const TableStandingsHeader = () => {
-    const { t } = useTranslation('common', { i18nInstance, useSuspense: false });
+let TableStandingsHeader = ({ t }) => {
     const headers = [
         t('tableStandingsHeader.Position'),
         t('tableStandingsHeader.Team'),
@@ -25,6 +23,12 @@ const TableStandingsHeader = () => {
         </div>
     );
 };
+
+TableStandingsHeader.propTypes = {
+    t: PropTypes.func,
+};
+
+TableStandingsHeader = globalizationHelper(TableStandingsHeader);
 
 const TableStandingsBody = ({ activeLeagueId, leagues }) => {
     const foundLeague = leagues.find(item => item.id === activeLeagueId);

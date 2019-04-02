@@ -1,24 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
-import i18nInstance from '../../../i18n';
+import globalizationHelper from '../globalizationHelper';
 
-const FavoritesButton = ({ isFavoritesShown, toggleShowingFavorites }) => {
-    const { t } = useTranslation('common', { i18nInstance, useSuspense: false });
-
-    return (
-        <button
-            className='favoritesButton'
-            onClick={toggleShowingFavorites}
-        >
-            {isFavoritesShown ? t('teams.showAllTeams') : t('teams.showOnlyFavoriteTeams')}
-        </button>
-    );
-};
+const FavoritesButton = ({ t, isFavoritesShown, toggleShowingFavorites }) => (
+    <button
+        className='favoritesButton'
+        onClick={toggleShowingFavorites}
+    >
+        {isFavoritesShown ? t('teams.showAllTeams') : t('teams.showOnlyFavoriteTeams')}
+    </button>
+);
 
 FavoritesButton.propTypes = {
+    t: PropTypes.func,
     toggleShowingFavorites: PropTypes.func.isRequired,
     isFavoritesShown: PropTypes.bool.isRequired,
 };
 
-export default FavoritesButton;
+export default globalizationHelper(FavoritesButton);

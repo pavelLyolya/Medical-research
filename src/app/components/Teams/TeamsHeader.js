@@ -1,20 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useTranslation } from 'react-i18next';
-import i18nInstance from '../../../i18n';
+import globalizationHelper from '../globalizationHelper';
 
-const TeamsHeader = ({ isFavoritesShown, headerName }) => {
-    const { t } = useTranslation('common', { i18nInstance, useSuspense: false });
-    return (
-        <header className='teamsHeader' >
-            <h2>{isFavoritesShown ? t('teams.favoriteTeams') : headerName}</h2>
-        </header>
-    );
-};
+const TeamsHeader = ({ t, isFavoritesShown, headerName }) => (
+    <header className='teamsHeader' >
+        <h2>{isFavoritesShown ? t('teams.favoriteTeams') : headerName}</h2>
+    </header>
+);
 
 TeamsHeader.propTypes = {
+    t: PropTypes.func,
     headerName: PropTypes.string.isRequired,
     isFavoritesShown: PropTypes.bool,
 };
 
-export default TeamsHeader;
+export default globalizationHelper(TeamsHeader);

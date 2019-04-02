@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withTranslation } from 'react-i18next';
+import globalizationHelper from '../../globalizationHelper';
 
 class DateChooser extends React.Component {
     constructor(props) {
@@ -58,4 +58,4 @@ DateChooser.propTypes = {
     updateDateTo: PropTypes.func.isRequired,
 };
 
-export default withTranslation('common')(DateChooser);
+export default globalizationHelper(DateChooser);
