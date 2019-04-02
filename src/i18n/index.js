@@ -10,8 +10,6 @@ const options = {
 
     debug: true,
 
-    lng: 'ru',
-
     resources: {
         ru: {
             common: ru.ru,
@@ -21,7 +19,7 @@ const options = {
         },
     },
 
-    fallbackLng: 'en',
+    fallbackLng: ['en', 'ru'],
 
     ns: ['common'],
 
