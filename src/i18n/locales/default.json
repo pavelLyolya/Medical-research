@@ -1,0 +1,65 @@
+{
+    "en": {
+        "home": {
+            "leagues": "...5 leagues...",
+            "teams": "...over 100 teams...",
+            "players": "...over 400 players...",
+            "fixtures": "...and fixtures statistics..."
+        },
+        "header": {
+            "navigation": {
+                "table": "table",
+                "teams": "teams"
+            }
+        },
+        "tableStandingsHeader": {
+            "Position": "Position",
+            "Team": "Team",
+            "G": "G",
+            "W": "W",
+            "D": "D",
+            "L": "L",
+            "GS": "GS",
+            "GC": "GC",
+            "P": "P"
+        },
+        "teams": {
+            "favoriteTeams": "favoriteTeams",
+            "showAllTeams": "Show all teams",
+            "showOnlyFavoriteTeams": "Show only favorite teams",
+            "shortName": "shortName",
+            "addToFavorites": "Add to favorites",
+            "removeFromFavorites": "Remove from favorites"
+        },
+        "team": {
+            "controlls": {
+                "players": "players",
+                "fixtures": "fixtures"
+            },
+            "headers": {
+                "Players": "Players",
+                "Fixtures": "Fixtures"
+            },
+            "pagination": {
+                "first": "first",
+                "prev": "prev",
+                "next": "next",
+                "last": "last"
+            },
+            "players": {
+                "position": "position",
+                "dateOfBirth": "dateOfBirth"
+            },
+            "dateChooser": {
+                "startDate": "startDate",
+                "endDate": "endDate"
+            },
+            "fixtures": {
+                "date": "date",
+                "statistics": "statistics",
+                "wins": "wins",
+                "draws": "draws"
+            }
+        }
+    }
+}

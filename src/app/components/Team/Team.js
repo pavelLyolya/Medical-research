@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
+import i18nInstance from '../../../i18n';
 import { TeamItem } from '../Teams/TeamsList';
 import Players from './Players';
 import Tweets from './Tweets';
@@ -8,6 +10,8 @@ import FixtureDetails from './Fixtures/FixtureDetails';
 import TeamControlls from './TeamControlls';
 import { isFavorite } from '../../services/functions';
 import '../../../css/Team.scss';
+
+const ExtendedTeamItem = withTranslation('common')(TeamItem);
 
 class Team extends React.Component {
     constructor(props) {
@@ -71,7 +75,9 @@ class Team extends React.Component {
         return (
             <section className='TeamSection'>
                 <header className='TeamHeader'>
-                    <TeamItem
+                    <ExtendedTeamItem
+                        i18n={i18nInstance}
+                        useSuspense={false}
                         team={team}
                         isFavorite={isFavorite(this.props.favoriteTeams, team.teamId)}
                         activeLeagueId={this.props.activeLeagueId}

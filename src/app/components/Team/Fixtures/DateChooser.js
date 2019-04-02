@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 class DateChooser extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ class DateChooser extends React.Component {
             <div className='dateChooser'>
                 <form className='dateForm'>
                     <div className='rowChooserForm'>
-                        <label htmlFor="start">Start date:</label>
+                        <label htmlFor="start">{this.props.t('team.dateChooser.startDate')}:</label>
                         <input
                             type="date"
                             id="start"
@@ -33,7 +34,7 @@ class DateChooser extends React.Component {
                         />
                     </div>
                     <div className='rowChooserForm'>
-                        <label htmlFor="end">End date:</label>
+                        <label htmlFor="end">{this.props.t('team.dateChooser.endDate')}:</label>
                         <input
                             type="date"
                             id="end"
@@ -49,6 +50,7 @@ class DateChooser extends React.Component {
 }
 
 DateChooser.propTypes = {
+    t: PropTypes.func.isRequired,
     dateFrom: PropTypes.string,
     dateTo: PropTypes.string,
     setDefaultDates: PropTypes.func.isRequired,
@@ -56,4 +58,4 @@ DateChooser.propTypes = {
     updateDateTo: PropTypes.func.isRequired,
 };
 
-export default DateChooser;
+export default withTranslation('common')(DateChooser);

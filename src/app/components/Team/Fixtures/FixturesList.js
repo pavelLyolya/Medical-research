@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation, useTranslation } from 'react-i18next';
+import i18nInstance from '../../../../i18n';
 
 const FixtureStatistics = ({
     homeTeamWins,
@@ -7,14 +9,17 @@ const FixtureStatistics = ({
     draws,
     homeTeamName,
     awayTeamName,
-}) => (
-    <div className='fixtureStatistics'>
-        <span>Statistics:</span>
-        <span>{homeTeamName} wins: {homeTeamWins}</span>
-        <span>{awayTeamName} wins: {awayTeamWins}</span>
-        <span>Draws: {draws}</span>
-    </div>
-);
+}) => {
+    const { t } = useTranslation('common', { i18nInstance, useSuspense: false });
+    return (
+        <div className='fixtureStatistics'>
+            <span>{t('team.fixtures.statistics')}:</span>
+            <span>{homeTeamName} {t('team.fixtures.wins')}: {homeTeamWins}</span>
+            <span>{awayTeamName} {t('team.fixtures.wins')}: {awayTeamWins}</span>
+            <span>{t('team.fixtures.draws')}: {draws}</span>
+        </div>
+    );
+};
 
 FixtureStatistics.propTypes = {
     homeTeamName: PropTypes.string.isRequired,
@@ -53,7 +58,7 @@ export class FixturesItem extends React.Component {
                         {this.props.score.homeTeam} - {this.props.score.awayTeam}
                     </span>}
                 </header>
-                <p className='fixturesItemDate'>Date: {new Date(this.props.utcDate).toDateString()}</p>
+                <p className='fixturesItemDate'>{this.props.t('team.fixtures.date')}: {new Date(this.props.utcDate).toDateString()}</p>
                 {this.props.statistics && <React.Fragment>
                     <hr />
                     <FixtureStatistics
@@ -70,6 +75,7 @@ export class FixturesItem extends React.Component {
 }
 
 FixturesItem.propTypes = {
+    t: PropTypes.func.isRequired,
     homeTeam: PropTypes.object.isRequired,
     awayTeam: PropTypes.object.isRequired,
     score: PropTypes.object,
@@ -83,6 +89,8 @@ FixturesItem.propTypes = {
 
 };
 
+export const ExtendedFixturesItem = withTranslation('common')(FixturesItem);
+
 const FixturesList = ({
     fixtures,
     fixtureDetails,
@@ -92,7 +100,9 @@ const FixturesList = ({
 }) => fixtures && (
     <section className='fixturesList'>
         {fixtures.map(item => (
-            <FixturesItem
+            <ExtendedFixturesItem
+                i18n={i18nInstance}
+                useSuspense={false}
                 key={item.id}
                 id={item.id}
                 isActive={item.id === fixtureDetails.activeItemId}

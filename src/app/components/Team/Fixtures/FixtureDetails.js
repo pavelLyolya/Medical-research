@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FixturesItem } from './FixturesList';
+import { ExtendedFixturesItem } from './FixturesList';
+import i18nInstance from '../../../../i18n';
 
 class FixtureDetails extends React.Component {
     componentWillUnmount() {
@@ -17,7 +18,9 @@ class FixtureDetails extends React.Component {
         }
         return (
             <div className='fixtureDetails'>
-                <FixturesItem
+                <ExtendedFixturesItem
+                    i18n={i18nInstance}
+                    useSuspense={false}
                     homeTeam={this.props.item.homeTeam}
                     awayTeam={this.props.item.awayTeam}
                     score={this.props.item.score.fullTime}
@@ -26,7 +29,9 @@ class FixtureDetails extends React.Component {
                 />
                 <div className='lastGamesPanel'>
                     {this.props.fixtureDetails.headToHead.map(game => (
-                        <FixturesItem
+                        <ExtendedFixturesItem
+                            i18n={i18nInstance}
+                            useSuspense={false}
                             key={game.id}
                             isActive={game.id === this.props.fixtureDetails.activeItemId}
                             homeTeam={game.homeTeam}

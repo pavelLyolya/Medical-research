@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withTranslation } from 'react-i18next';
 
 class Pagination extends React.Component {
     constructor(props) {
@@ -97,11 +98,11 @@ class Pagination extends React.Component {
                 <span
                     onClick={this.goToFirst}
                     className='firstPage'
-                >first</span>
+                >{this.props.t('team.pagination.first')}</span>
                 <span
                     onClick={this.goToPrev}
                     className='prevPage'
-                >prev</span>
+                >{this.props.t('team.pagination.prev')}</span>
                 <span className='pageNumber'>
                     {this.props.currentPage}
                     /
@@ -110,17 +111,18 @@ class Pagination extends React.Component {
                 <span
                     onClick={this.goToNext}
                     className='nextPage'
-                >next</span>
+                >{this.props.t('team.pagination.next')}</span>
                 <span
                     onClick={this.goToLast}
                     className='lastPage'
-                >last</span>
+                >{this.props.t('team.pagination.last')}</span>
             </div>
         );
     }
 }
 
 Pagination.propTypes = {
+    t: PropTypes.func.isRequired,
     currentPage: PropTypes.number.isRequired,
     pagesNumber: PropTypes.number,
     itemsPerPage: PropTypes.number.isRequired,
@@ -139,4 +141,4 @@ Pagination.propTypes = {
     clearPagination: PropTypes.func.isRequired,
 };
 
-export default Pagination;
+export default withTranslation('common')(Pagination);

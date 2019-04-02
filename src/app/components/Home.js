@@ -1,13 +1,19 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import i18nInstance from '../../i18n';
 import '../../css/Footer.scss';
 
-const Home = () => (
-    <section className='homePage'>
-        <p className='description'>...5 leagues...</p>
-        <p className='description'>...over 100 teams...</p>
-        <p className='description'>...over 400 players...</p>
-        <p className='description'>...and fixtures statistics...</p>
-    </section>
-);
+const Home = () => {
+    const { t } = useTranslation('common', { i18nInstance, useSuspense: false });
+
+    return (
+        <section className='homePage'>
+            <p className='description'>{t('home.leagues')}</p>
+            <p className='description'>{t('home.teams')}</p>
+            <p className='description'>{t('home.players')}</p>
+            <p className='description'>{t('home.fixtures')}</p>
+        </section>
+    );
+};
 
 export default Home;
