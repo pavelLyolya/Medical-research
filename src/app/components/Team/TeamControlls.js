@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../globalizationHelper';
+import { team } from '../../services/translationKeys';
 
 const TeamControlls = ({ t, isPlayersActive, togglePlayersFixtures }) => (
     <div className='TeamControlls'>
@@ -8,12 +9,12 @@ const TeamControlls = ({ t, isPlayersActive, togglePlayersFixtures }) => (
             className={isPlayersActive ? 'teamControllActive' : 'teamControll'}
             disabled={isPlayersActive}
             onClick={togglePlayersFixtures}
-        >{t('team.controlls.players')}</button>
+        >{t(team.controlls.players)}</button>
         <button
             className={isPlayersActive ? 'teamControll' : 'teamControllActive'}
             disabled={!isPlayersActive}
             onClick={togglePlayersFixtures}
-        >{t('team.controlls.fixtures')}</button>
+        >{t(team.controlls.fixtures)}</button>
     </div>
 );
 

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../globalizationHelper';
+import { teams } from '../../services/translationKeys';
 
 class TeamItem extends React.PureComponent {
     constructor(props) {
@@ -25,9 +26,11 @@ class TeamItem extends React.PureComponent {
                 </div>
                 <div className='teamInfo'>
                     <Link to={`/teams/${this.props.team.teamId}`} className='teamName'>{this.props.team.name}</Link>
-                    <span className='teamShortName'>{this.props.t('teams.shortName')}: {this.props.team.shortName}</span>
+                    <span className='teamShortName'>{this.props.t(teams.shortName)}: {this.props.team.shortName}</span>
                     <button className='addToFavorite' onClick={this.toggleFavorite}>
-                        {this.props.isFavorite ? this.props.t('teams.removeFromFavorites') : this.props.t('teams.addToFavorites')}
+                        {this.props.isFavorite
+                            ? this.props.t(teams.removeFromFavorites)
+                            : this.props.t(teams.addToFavorites)}
                     </button>
                 </div>
             </div>

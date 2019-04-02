@@ -48,7 +48,7 @@
             },
             "players": {
                 "position": "position",
-                "dateOfBirth": "dateOfBirth"
+                "dateOfBirth": "date of birth"
             },
             "dateChooser": {
                 "startDate": "startDate",

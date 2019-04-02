@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../globalizationHelper';
 import Pagination from '../../containers/PaginationContainer';
+import { team } from '../../services/translationKeys';
 
 let PlayerItem = ({
     t, name, position, dateOfBirth, shirtNumber,
@@ -9,8 +10,8 @@ let PlayerItem = ({
     <div className='playerItem'>
         <div className='playerInfo'>
             <h3 className='playerName'>{name}</h3>
-            <span className='restInfo'>{t('team.players.position')}: {position}</span>
-            <span className='restInfo'>{t('team.players.dateOfBirth')}: {new Date(dateOfBirth).toDateString()}</span>
+            <span className='restInfo'>{t(team.players.position)}: {position}</span>
+            <span className='restInfo'>{t(team.players.dateOfBirth)}: {new Date(dateOfBirth).toDateString()}</span>
         </div>
         <div className='shirtNumber'>
             <span>{shirtNumber}</span>

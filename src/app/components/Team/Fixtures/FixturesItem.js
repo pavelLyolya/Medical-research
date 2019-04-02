@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../../globalizationHelper';
 import FixtureStatistics from './FixtureStatistics';
+import { team } from '../../../services/translationKeys';
 
 class FixturesItem extends React.Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class FixturesItem extends React.Component {
                         {this.props.score.homeTeam} - {this.props.score.awayTeam}
                     </span>}
                 </header>
-                <p className='fixturesItemDate'>{this.props.t('team.fixtures.date')}: {new Date(this.props.utcDate).toDateString()}</p>
+                <p className='fixturesItemDate'>{this.props.t(team.fixtures.date)}: {new Date(this.props.utcDate).toDateString()}</p>
                 {this.props.statistics && <React.Fragment>
                     <hr />
                     <FixtureStatistics

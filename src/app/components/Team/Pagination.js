@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../globalizationHelper';
+import { team } from '../../services/translationKeys';
 
 class Pagination extends React.Component {
     constructor(props) {
@@ -98,11 +99,11 @@ class Pagination extends React.Component {
                 <span
                     onClick={this.goToFirst}
                     className='firstPage'
-                >{this.props.t('team.pagination.first')}</span>
+                >{this.props.t(team.pagination.first)}</span>
                 <span
                     onClick={this.goToPrev}
                     className='prevPage'
-                >{this.props.t('team.pagination.prev')}</span>
+                >{this.props.t(team.pagination.prev)}</span>
                 <span className='pageNumber'>
                     {this.props.currentPage}
                     /
@@ -111,11 +112,11 @@ class Pagination extends React.Component {
                 <span
                     onClick={this.goToNext}
                     className='nextPage'
-                >{this.props.t('team.pagination.next')}</span>
+                >{this.props.t(team.pagination.next)}</span>
                 <span
                     onClick={this.goToLast}
                     className='lastPage'
-                >{this.props.t('team.pagination.last')}</span>
+                >{this.props.t(team.pagination.last)}</span>
             </div>
         );
     }

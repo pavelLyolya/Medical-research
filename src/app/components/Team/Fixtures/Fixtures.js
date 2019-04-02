@@ -5,10 +5,11 @@ import TeamsHeader from '../../Teams/TeamsHeader';
 import FixturesList from '../../../containers/FixturesListContainer';
 import Pagination from '../../../containers/PaginationContainer';
 import DateChooser from '../../../containers/DateChooserContainer';
+import { team } from '../../../services/translationKeys';
 
 const Fixtures = ({ t }) => (
     <div className='fixtures'>
-        <TeamsHeader headerName={t('team.headers.Fixtures')} />
+        <TeamsHeader headerName={t(team.headers.Fixtures)} />
         <DateChooser />
         <Pagination />
         <FixturesList />

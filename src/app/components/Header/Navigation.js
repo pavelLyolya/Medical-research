@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import globalizationHelper from '../globalizationHelper';
 import { pageNames } from '../../services/constants';
+import { header } from '../../services/translationKeys';
 
 const Navigation = ({
     t, activePageName, activateTable, activateTeams,
@@ -12,13 +13,13 @@ const Navigation = ({
             className={activePageName === pageNames.TABLE ? 'headerLinkActive' : 'headerLink'}
             onClick={activateTable}
         >
-            {t('header.navigation.table')}
+            {t(header.navigation.table)}
         </Link>
         <Link to='/teams'
             className={activePageName === pageNames.TEAMS ? 'headerLinkActive' : 'headerLink'}
             onClick={activateTeams}
         >
-            {t('header.navigation.teams')}
+            {t(header.navigation.teams)}
         </Link>
     </nav>
 );

@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../globalizationHelper';
+import { teams } from '../../services/translationKeys';
 
 const FavoritesButton = ({ t, isFavoritesShown, toggleShowingFavorites }) => (
     <button
         className='favoritesButton'
         onClick={toggleShowingFavorites}
     >
-        {isFavoritesShown ? t('teams.showAllTeams') : t('teams.showOnlyFavoriteTeams')}
+        {isFavoritesShown ? t(teams.showAllTeams) : t(teams.showOnlyFavoriteTeams)}
     </button>
 );
 

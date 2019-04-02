@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import globalizationHelper from '../../globalizationHelper';
+import { team } from '../../../services/translationKeys';
 
 const FixtureStatistics = ({
     t,
@@ -11,10 +12,10 @@ const FixtureStatistics = ({
     awayTeamName,
 }) => (
     <div className='fixtureStatistics'>
-        <span>{t('team.fixtures.statistics')}:</span>
-        <span>{homeTeamName} {t('team.fixtures.wins')}: {homeTeamWins}</span>
-        <span>{awayTeamName} {t('team.fixtures.wins')}: {awayTeamWins}</span>
-        <span>{t('team.fixtures.draws')}: {draws}</span>
+        <span>{t(team.fixtures.statistics)}:</span>
+        <span>{homeTeamName} {t(team.fixtures.wins)}: {homeTeamWins}</span>
+        <span>{awayTeamName} {t(team.fixtures.wins)}: {awayTeamWins}</span>
+        <span>{t(team.fixtures.draws)}: {draws}</span>
     </div>
 );
 
