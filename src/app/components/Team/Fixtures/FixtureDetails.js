@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { FixturesItem } from './FixturesList';
+import FixturesItem from './FixturesItem';
 
 class FixtureDetails extends React.Component {
     componentWillUnmount() {

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import globalizationHelper from '../globalizationHelper';
 import Pagination from '../../containers/PaginationContainer';
+import { team } from '../../services/translationKeys';
 
-const PlayerItem = ({
-    name, position, dateOfBirth, shirtNumber,
+let PlayerItem = ({
+    t, name, position, dateOfBirth, shirtNumber,
 }) => (
     <div className='playerItem'>
         <div className='playerInfo'>
             <h3 className='playerName'>{name}</h3>
-            <span className='restInfo'>position: {position}</span>
-            <span className='restInfo'>date of birth: {new Date(dateOfBirth).toDateString()}</span>
+            <span className='restInfo'>{t(team.players.position)}: {position}</span>
+            <span className='restInfo'>{t(team.players.dateOfBirth)}: {new Date(dateOfBirth).toDateString()}</span>
         </div>
         <div className='shirtNumber'>
             <span>{shirtNumber}</span>
@@ -19,11 +21,14 @@ const PlayerItem = ({
 );
 
 PlayerItem.propTypes = {
+    t: PropTypes.func,
     name: PropTypes.string.isRequired,
     position: PropTypes.string,
     dateOfBirth: PropTypes.string.isRequired,
     shirtNumber: PropTypes.number,
 };
+
+PlayerItem = globalizationHelper(PlayerItem);
 
 const PlayersList = ({ players }) => players && (
     <React.Fragment>

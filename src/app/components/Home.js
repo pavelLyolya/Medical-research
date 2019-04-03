@@ -1,13 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import globalizationHelper from './globalizationHelper';
 import '../../css/Footer.scss';
+import { home } from '../services/translationKeys';
 
-const Home = () => (
+const Home = ({ t }) => (
     <section className='homePage'>
-        <p className='description'>...5 leagues...</p>
-        <p className='description'>...over 100 teams...</p>
-        <p className='description'>...over 400 players...</p>
-        <p className='description'>...and fixtures statistics...</p>
+        <p className='description'>{t(home.leagues)}</p>
+        <p className='description'>{t(home.teams)}</p>
+        <p className='description'>{t(home.players)}</p>
+        <p className='description'>{t(home.fixtures)}</p>
     </section>
 );
 
-export default Home;
+Home.propTypes = {
+    t: PropTypes.func,
+};
+
+export default globalizationHelper(Home);

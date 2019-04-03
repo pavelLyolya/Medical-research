@@ -1,0 +1,65 @@
+{
+    "ru": {
+        "home": {
+            "leagues": "...5 лиг...",
+            "teams": "...более 100 команд...",
+            "players": "...более 400 игроков...",
+            "fixtures": "...и статистика матчей..."
+        },
+        "header": {
+            "navigation": {
+                "table": "таблица",
+                "teams": "команды"
+            }
+        },
+        "tableStandingsHeader": {
+            "Position": "Позиция",
+            "Team": "Команда",
+            "G": "Игр",
+            "W": "Побед",
+            "D": "Ничья",
+            "L": "Проигр.",
+            "GS": "Забит.",
+            "GC": "Пропущ.",
+            "P": "Очки"
+        },
+        "teams": {
+            "favoriteTeams": "Любимые команды",
+            "showAllTeams": "Все команды",
+            "showOnlyFavoriteTeams": "Любимые команды",
+            "shortName": "краткое название",
+            "addToFavorites": "Добавить в любимые",
+            "removeFromFavorites": "Удалить из любимых"
+        },
+        "team": {
+            "controlls": {
+                "players": "игроки",
+                "fixtures": "матчи"
+            },
+            "headers": {
+                "Players": "Игроки",
+                "Fixtures": "Матчи"
+            },
+            "pagination": {
+                "first": "начало",
+                "prev": "пред.",
+                "next": "след.",
+                "last": "конец"
+            },
+            "players": {
+                "position": "позиция",
+                "dateOfBirth": "дата рождения"
+            },
+            "dateChooser": {
+                "startDate": "С",
+                "endDate": "По"
+            },
+            "fixtures": {
+                "date": "Дата",
+                "statistics": "Статистика",
+                "wins": "побед",
+                "draws": "Ничья"
+            }
+        }
+    }
+}

@@ -1,18 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import globalizationHelper from '../globalizationHelper';
+import { teams } from '../../services/translationKeys';
 
-const FavoritesButton = ({ isFavoritesShown, toggleShowingFavorites }) => (
+const FavoritesButton = ({ t, isFavoritesShown, toggleShowingFavorites }) => (
     <button
         className='favoritesButton'
         onClick={toggleShowingFavorites}
     >
-        {isFavoritesShown ? 'Show all teams' : 'Show only favorite teams'}
+        {isFavoritesShown ? t(teams.showAllTeams) : t(teams.showOnlyFavoriteTeams)}
     </button>
 );
 
 FavoritesButton.propTypes = {
+    t: PropTypes.func,
     toggleShowingFavorites: PropTypes.func.isRequired,
     isFavoritesShown: PropTypes.bool.isRequired,
 };
 
-export default FavoritesButton;
+export default globalizationHelper(FavoritesButton);

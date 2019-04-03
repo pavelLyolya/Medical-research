@@ -1,24 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import globalizationHelper from '../globalizationHelper';
+import { team } from '../../services/translationKeys';
 
-const TeamControlls = ({ isPlayersActive, togglePlayersFixtures }) => (
+const TeamControlls = ({ t, isPlayersActive, togglePlayersFixtures }) => (
     <div className='TeamControlls'>
         <button
             className={isPlayersActive ? 'teamControllActive' : 'teamControll'}
             disabled={isPlayersActive}
             onClick={togglePlayersFixtures}
-        >players</button>
+        >{t(team.controlls.players)}</button>
         <button
             className={isPlayersActive ? 'teamControll' : 'teamControllActive'}
             disabled={!isPlayersActive}
             onClick={togglePlayersFixtures}
-        >fixtures</button>
+        >{t(team.controlls.fixtures)}</button>
     </div>
 );
 
 TeamControlls.propTypes = {
+    t: PropTypes.func,
     isPlayersActive: PropTypes.bool.isRequired,
     togglePlayersFixtures: PropTypes.func.isRequired,
 };
 
-export default TeamControlls;
+export default globalizationHelper(TeamControlls);

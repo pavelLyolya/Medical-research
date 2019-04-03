@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TeamItem } from '../Teams/TeamsList';
+import TeamItem from '../Teams/TeamItem';
 import Players from './Players';
 import Tweets from './Tweets';
 import Fixtures from './Fixtures/Fixtures';
