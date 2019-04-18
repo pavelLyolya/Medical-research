@@ -1,11 +1,13 @@
 {
   "presets": [
-    ["@babel/env", {
+    ["@babel/preset-env", {
+      "modules": false,
       "targets": {
         "node": "current"
       },
       "useBuiltIns": "entry"
     }],
     "@babel/react"
-  ]
+  ],
+  "plugins": ["@babel/plugin-external-helpers"],
 }
