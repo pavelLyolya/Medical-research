@@ -12,7 +12,8 @@ import htmlTemplate from 'rollup-plugin-generate-html-template';
 import json from 'rollup-plugin-json';
 import builtins from 'rollup-plugin-node-builtins';
 import progress from 'rollup-plugin-progress';
-import collectSass from 'rollup-plugin-collect-sass';
+
+import autoprefixer from 'autoprefixer';
 
 export default {
     input: [
@@ -30,12 +31,10 @@ export default {
         progress(),
         multiEntry(),
         builtins(),
-        collectSass({
-            importOnce: true,
-            extensions: ['scss', 'css', 'sass'],
-        }),
         postcss({
-            extensions: ['.css'],
+            plugins: [
+                autoprefixer(),
+            ],
         }),
         babel({
             babelrc: false,
