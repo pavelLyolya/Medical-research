@@ -1,4 +1,5 @@
-import '@babel/polyfill';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 import multiEntry from 'rollup-plugin-multi-entry';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
@@ -9,50 +10,72 @@ import livereload from 'rollup-plugin-livereload';
 import postcss from 'rollup-plugin-postcss';
 import htmlTemplate from 'rollup-plugin-generate-html-template';
 import json from 'rollup-plugin-json';
+import builtins from 'rollup-plugin-node-builtins';
+import progress from 'rollup-plugin-progress';
 
 export default {
     input: [
-        '@babel/polyfill',
+        'core-js/stable',
+        'regenerator-runtime/runtime',
         './src/app/index.js',
     ],
     output: {
         file: './dist/bundle.js',
-        format: 'iife',
+        format: 'esm',
         sourcemap: true,
-        exports: 'named',
-        globals: {
-            react: 'React',
-            'react-dom': 'ReactDOM',
-            'react-is': 'reactIs',
-            'prop-types': 'PropTypes',
-        },
     },
-    external: [
-        'react',
-        'react-dom',
-        'react-is',
-        'styled-components',
-        'prop-types',
-    ],
+    // external: [
+    //     'react-is',
+    // ],
     plugins: [
+        progress(),
         multiEntry(),
+        builtins(),
         babel({
-            exclude: 'node_modules/**',
+            babelrc: false,
+            presets: [
+                ['@babel/preset-env', {
+                    modules: false,
+                    targets: {
+                        node: 'current',
+                    },
+                    useBuiltIns: 'entry',
+                    corejs: 3,
+                }],
+                '@babel/preset-react',
+            ],
         }),
         resolve({
-            preferBuiltins: true,
+            browser: true,
+            extensions: ['.js', '.jsx', '.json'],
+        }),
+        commonjs({
+            include: 'node_modules/**',
+            exclude: [
+                'node_modules/process-es6/**',
+            ],
+            namedExports: {
+                'node_modules/react/index.js': [
+                    'Children',
+                    'Component',
+                    'PureComponent',
+                    'PropTypes',
+                    'createElement',
+                    'useContext',
+                    'useState',
+                    'useEffect',
+                    'useCallback',
+                    'memo',
+                ],
+                'node_modules/react-dom/index.js': ['render'],
+                'node_modules/react-is/index.js': [
+                    'isValidElementType',
+                    'isContextConsumer',
+                ],
+            },
         }),
         replace({
             'process.env.NODE_ENV': JSON.stringify('development'),
-        }),
-        commonjs({
-            // include: 'node_modules/**',
-            // namedExports:
-            // {
-            //     './node_modules/react/react.js':
-            //    ['cloneElement', 'createElement', 'PropTypes',
-            //        'Children', 'Component'],
-            // },
         }),
         serve({
             contentBase: 'dist',
