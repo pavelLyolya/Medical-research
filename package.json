@@ -8,7 +8,8 @@
     "eslint": "eslint src/app/",
     "test": "jest",
     "test:watch": "jest --watch",
-    "start": "rollup --config rollup.config.dev.js",
+    "start": "rollup --config rollup.config.dev.js --watch",
+    "start:wp": "webpack-dev-server --mode development --config webpack.config.dev.babel.js --open",
     "build": "webpack --config webpack.config.prod.babel.js"
   },
   "husky": {

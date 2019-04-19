@@ -92,6 +92,6 @@ export default {
             contentBase: 'dist',
             open: true,
         }),
-        livereload({ watch: 'src' }),
+        livereload({ watch: 'dist' }),
     ],
 };
