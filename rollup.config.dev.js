@@ -12,25 +12,31 @@ import htmlTemplate from 'rollup-plugin-generate-html-template';
 import json from 'rollup-plugin-json';
 import builtins from 'rollup-plugin-node-builtins';
 import progress from 'rollup-plugin-progress';
+import collectSass from 'rollup-plugin-collect-sass';
 
 export default {
     input: [
         'core-js/stable',
         'regenerator-runtime/runtime',
         './src/app/index.js',
+        './src/css/main.scss',
     ],
     output: {
         file: './dist/bundle.js',
         format: 'esm',
         sourcemap: true,
     },
-    // external: [
-    //     'react-is',
-    // ],
     plugins: [
         progress(),
         multiEntry(),
         builtins(),
+        collectSass({
+            importOnce: true,
+            extensions: ['scss', 'css', 'sass'],
+        }),
+        postcss({
+            extensions: ['.css'],
+        }),
         babel({
             babelrc: false,
             presets: [
@@ -77,18 +83,15 @@ export default {
         replace({
             'process.env.NODE_ENV': JSON.stringify('development'),
         }),
-        serve({
-            contentBase: 'dist',
-            open: true,
-        }),
         htmlTemplate({
             template: 'src/index.html',
             target: 'dist/index.html',
         }),
-        livereload({ watch: 'dist' }),
         json(),
-        postcss({
-            extensions: ['.css'],
+        serve({
+            contentBase: 'dist',
+            open: true,
         }),
+        livereload({ watch: 'src' }),
     ],
 };
