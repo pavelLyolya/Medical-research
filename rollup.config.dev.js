@@ -90,6 +90,7 @@ export default {
         serve({
             contentBase: 'dist',
             open: true,
+            historyApiFallback: true,
         }),
         livereload({ watch: 'dist' }),
     ],
