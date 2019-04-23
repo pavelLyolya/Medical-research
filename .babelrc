@@ -1,11 +1,12 @@
 {
-  "presets": [
-    ["@babel/env", {
-      "targets": {
-        "node": "current"
-      },
-      "useBuiltIns": "entry"
-    }],
-    "@babel/react"
-  ]
-}
+    "presets": [
+      ["@babel/env", {
+        "targets": {
+          "node": "current"
+        },
+        "useBuiltIns": "entry",
+        "corejs": 3,
+      }],
+      "@babel/react"
+    ]
+  }

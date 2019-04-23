@@ -15,6 +15,10 @@ const store = createStore(
     composeEnhancers(applyMiddleware(thunk)),
 );
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/serviceWorker.js');
+}
+
 render(
     <Provider store={store} >
         <App />
