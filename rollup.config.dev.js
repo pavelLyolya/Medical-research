@@ -37,18 +37,7 @@ export default {
             ],
         }),
         babel({
-            babelrc: false,
-            presets: [
-                ['@babel/preset-env', {
-                    modules: false,
-                    targets: {
-                        node: 'current',
-                    },
-                    useBuiltIns: 'entry',
-                    corejs: 3,
-                }],
-                '@babel/preset-react',
-            ],
+            babelrc: true,
         }),
         resolve({
             browser: true,

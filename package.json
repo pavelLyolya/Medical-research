@@ -42,6 +42,7 @@
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^4.6.0",
+    "core-js": "^3.0.1",
     "css-loader": "^2.1.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
@@ -63,6 +64,7 @@
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "postcss-loader": "^3.0.0",
     "redux-mock-store": "^1.5.3",
+    "regenerator-runtime": "^0.13.2",
     "rollup": "^1.10.0",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-collect-sass": "^1.0.9",
@@ -87,7 +89,6 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "core-js": "^3.0.1",
     "i18next": "^15.0.8",
     "i18next-browser-languagedetector": "^3.0.1",
     "prop-types": "^15.7.2",
@@ -97,7 +98,6 @@
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0",
-    "regenerator-runtime": "^0.13.2"
+    "redux-thunk": "^2.3.0"
   }
 }
